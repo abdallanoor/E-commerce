@@ -10,7 +10,7 @@ export default function Home() {
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Home</title>
+        <title>Pixel Srote</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
 
