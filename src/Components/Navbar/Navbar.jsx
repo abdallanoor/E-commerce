@@ -134,7 +134,7 @@ export default function Navbar() {
               className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
               to="/"
             >
-              <div className="flex flex-none items-center justify-center border border-neutral-200 bg-white dark:border-neutral-700 dark:bg-black h-[40px] w-[40px] rounded-xl overflow-hidden">
+              <div className="flex flex-none items-center justify-center border border-neutral-200 bg-white  dark:border-neutral-700 dark:bg-black h-[40px] w-[40px] rounded-xl overflow-hidden">
                 <img src={logo} alt="" />
               </div>
               <div className="ml-2 flex-none text-sm font-bold uppercase md:hidden lg:block">

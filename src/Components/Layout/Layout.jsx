@@ -5,12 +5,12 @@ import { Outlet } from "react-router-dom";
 
 export default function Layout() {
   return (
-    <>
+    <div>
       <Navbar />
-      <div className="container">
+      <div>
         <Outlet></Outlet>
         {/* <Footer /> */}
       </div>
-    </>
+    </div>
   );
 }

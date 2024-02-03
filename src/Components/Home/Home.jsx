@@ -14,8 +14,8 @@ export default function Home() {
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
 
-      {/* <MainSlider />
-      <CategorySlider />
+      <MainSlider />
+      {/* <CategorySlider />
       <FeaturedProducts /> */}
     </>
   );
