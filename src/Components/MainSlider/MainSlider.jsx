@@ -18,7 +18,7 @@ export default function MainSlider() {
 
   return (
     <>
-      <section className="mx-auto grid max-w-screen-2xl gap-4 px-4 pb-4 md:grid-cols-6 md:grid-rows-2 h-section">
+      <section className="mx-auto grid max-w-screen-2xl gap-4 px-4 pb-4 md:grid-cols-6 md:grid-rows-2 ">
         <div className="md:col-span-4 md:row-span-2">
           <a
             className="relative block aspect-square h-full w-full"

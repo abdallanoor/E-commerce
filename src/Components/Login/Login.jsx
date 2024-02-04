@@ -71,11 +71,9 @@ export default function Login() {
             exclusive deals & seamless purchasing.
           </p>
           <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
-            For Test
-            <br />
-            Email: abdallah@yahoo.com
-            <br />
-            Password: Abdo123
+            <div>For Test</div>
+            <div>Email: abdallah@yahoo.com</div>
+            <div>Password: Abdo123</div>
           </p>
 
           <form
