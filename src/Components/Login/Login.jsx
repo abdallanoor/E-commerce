@@ -72,7 +72,7 @@ export default function Login() {
           </p> */}
           <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
             <div>For Test</div>
-            <div>Email: abdallah@yahoo.com</div>
+            <div className="decoration-transparent">Email: abdallah@yahoo.com</div>
             <div>Password: Abdo123</div>
           </p>
 
@@ -181,8 +181,11 @@ export default function Login() {
 
             <p className="text-center text-sm text-gray-500">
               No account?{" "}
-              <Link className="underline" to="/register">
-                Sign up
+              <Link
+                className="text-gray-700 underline dark:text-gray-200"
+                to="/register"
+              >
+                Register
               </Link>
             </p>
           </form>
