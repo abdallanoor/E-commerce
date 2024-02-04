@@ -1,5 +1,4 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import "./App.css";
 import Layout from "./Components/Layout/Layout";
 import Home from "./Components/Home/Home";
 import Notfound from "./Components/Notfound/Notfound";
@@ -17,6 +16,7 @@ import { useContext, useEffect } from "react";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import Address from "./Components/Address/Address";
 import Orders from "./Components/Orders/Orders";
+import "./App.css";
 
 let Routers = createBrowserRouter([
   {
@@ -118,9 +118,7 @@ function App() {
     if (localStorage.getItem("userToken") !== null) {
       setUserToken(localStorage.getItem("userToken"));
     }
-  }, []);
-
-  useEffect(() => {
+    //
     document.body.classList.add(
       "bg-neutral-50",
       "text-black",

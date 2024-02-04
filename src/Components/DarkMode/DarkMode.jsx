@@ -8,19 +8,6 @@ export default function DarkMode() {
   );
   const element = document.documentElement;
   const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
-  console.log(darkQuery);
-  let sun = SunIcon;
-  let Moon = MoonIcon;
-  const options = [
-    {
-      icon: sun,
-      text: "light",
-    },
-    {
-      icon: Moon,
-      text: "dark",
-    },
-  ];
 
   function onWindowMatch() {
     if (

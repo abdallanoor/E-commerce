@@ -2,10 +2,16 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useFormik } from "formik";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import * as Yup from "yup";
+import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
+import logo from "../../Assets/images/LogoSvg.svg";
+import logo2 from "../../Assets/images/LogoSvg2.svg";
+import register from "../../Assets/images/register.jpg";
+import register2 from "../../Assets/images/register2.jpg";
 
 // import Style from './Register.module.css'
+import LoadingDots from "./../LoadingDots/LoadingDots";
 
 export default function Register() {
   //Navigate
@@ -13,19 +19,19 @@ export default function Register() {
   //Yup Validation
   let userSchema = Yup.object({
     name: Yup.string()
-      .min(3, "name minlenght is 3")
-      .max(20, "name maxlenght is 20")
-      .required("name is required"),
+      .min(3, "Name minlenght is 3")
+      .max(20, "Name maxlenght is 20")
+      .required("Name is required"),
     phone: Yup.string()
       .matches(/^01[0125]\d{8}$/, "phone is invalid")
-      .required("phone is required"),
-    email: Yup.string().email("email is invalid").required("email is required"),
+      .required("Phone is required"),
+    email: Yup.string().email("Email is invalid").required("Email is required"),
     password: Yup.string()
       .matches(/^[A-Z][a-z0-9]{3,10}$/, "Password start with Uppercase")
-      .required("password is required"),
+      .required("Password is required"),
     rePassword: Yup.string()
       .oneOf([Yup.ref("password")], "")
-      .required("repassword is required"),
+      .required("Password Confirmation is required"),
   });
 
   //Loading
@@ -55,7 +61,6 @@ export default function Register() {
       email: "",
       password: "",
       rePassword: "",
-      // photo: ''
     },
     validationSchema: userSchema,
     onSubmit: registerSubmit,
@@ -63,119 +68,271 @@ export default function Register() {
 
   return (
     <>
-      <div className="w-75 mx-auto py-4">
-        <h2>Register Now</h2>
-        {Error ? <div className="alert alert-danger p-2">{Error}</div> : ""}
+      <section>
+        <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
+          <section className="relative flex h-32 items-end bg-neutral-900 lg:col-span-5 lg:h-full xl:col-span-6">
+            <img
+              alt="register"
+              src={register}
+              className="absolute inset-0 h-full w-full object-cover opacity-80"
+            />
 
-        <form onSubmit={formik.handleSubmit}>
-          <label htmlFor="name">Name :</label>
-          <input
-            value={formik.values.name}
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            name="name"
-            id="name"
-            type="text"
-            className="form-control mb-2"
-          />
-          {formik.errors.name && formik.touched.name ? (
-            <div className="alert alert-danger p-2">{formik.errors.name}</div>
-          ) : (
-            ""
-          )}
+            <div className="hidden lg:relative lg:block lg:p-12">
+              <a className="block text-white" href="/">
+                <span className="sr-only">Home</span>
+                <img src={logo} alt="logo" className="h-8 sm:h-10" />
+              </a>
 
-          <label htmlFor="email">Email :</label>
-          <input
-            value={formik.values.email}
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            name="email"
-            id="email"
-            type="email"
-            className="form-control mb-2"
-          />
-          {formik.errors.email && formik.touched.email ? (
-            <div className="alert alert-danger p-2">{formik.errors.email}</div>
-          ) : (
-            ""
-          )}
+              <h2 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
+                Welcome to Pixel Store
+              </h2>
 
-          <label htmlFor="phone">Phone :</label>
-          <input
-            value={formik.values.phone}
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            name="phone"
-            type="tel"
-            id="phone"
-            className="form-control mb-2"
-          />
-          {formik.errors.phone && formik.touched.phone ? (
-            <div className="alert alert-danger p-2">{formik.errors.phone}</div>
-          ) : (
-            ""
-          )}
-
-          <label htmlFor="password">password :</label>
-          <input
-            value={formik.values.password}
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            name="password"
-            type="password"
-            id="password"
-            className="form-control mb-2"
-            autoComplete="on"
-          />
-          {formik.errors.password && formik.touched.password ? (
-            <div className="alert alert-danger p-2">
-              {formik.errors.password}
+              <p className="mt-4 leading-relaxed text-white/90">
+                Explore fashion trends, enhance your shopping online. Register
+                for exclusive deals & seamless purchasing.
+              </p>
             </div>
-          ) : (
-            ""
-          )}
+          </section>
 
-          <label htmlFor="rePassword">Re Password :</label>
-          <input
-            value={formik.values.rePassword}
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            name="rePassword"
-            type="password"
-            id="rePassword"
-            className="form-control mb-2"
-            autoComplete="on"
-          />
-          {formik.errors.rePassword && formik.touched.rePassword ? (
-            <div className="alert alert-danger p-2">
-              {formik.errors.rePassword}
+          <main className="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6">
+            <div className="max-w-xl lg:max-w-3xl">
+              <div className="relative -mt-16 block lg:hidden">
+                <a
+                  className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-white text-blue-600 sm:h-20 sm:w-20 dark:bg-black"
+                  href="/"
+                >
+                  <span className="sr-only">Home</span>
+                  <img src={logo2} alt="Logo2" className="h-8 sm:h-10" />
+                </a>
+
+                <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl dark:text-white">
+                  Welcome to Pixel Store
+                </h1>
+
+                <p className="mt-4 leading-relaxed text-gray-500 dark:text-gray-400">
+                  Explore fashion trends, enhance your shopping online. Register
+                  for exclusive deals & seamless purchasing.
+                </p>
+              </div>
+
+              {Error ? (
+                <div
+                  role="alert"
+                  className="rounded border-s-4 flex gap-1 border-red-500 bg-red-50 dark:bg-red-700/10 p-3 mt-6"
+                >
+                  <p className="block font-medium text-red-800 dark:text-red-50">
+                    {Error}
+                  </p>
+                </div>
+              ) : (
+                ""
+              )}
+
+              <form
+                onSubmit={formik.handleSubmit}
+                className="mt-8 grid grid-cols-6 gap-6"
+              >
+                <div className="col-span-6 sm:col-span-3">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                  >
+                    Name
+                  </label>
+
+                  <input
+                    value={formik.values.name}
+                    onBlur={formik.handleBlur}
+                    onChange={formik.handleChange}
+                    type="text"
+                    id="name"
+                    name="name"
+                    className="mt-1 w-full rounded-md p-3 border border-gray-200 dark:focus-visible:border-neutral-900 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-neutral-900 dark:text-gray-200"
+                  />
+                  {formik.errors.name && formik.touched.name ? (
+                    <div
+                      role="alert"
+                      className="rounded border-s-4 flex gap-1 border-red-500 bg-red-50 dark:bg-red-700/10 p-3 mt-2"
+                    >
+                      <p className="block font-medium text-red-800 dark:text-red-50">
+                        {formik.errors.name}
+                      </p>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </div>
+
+                <div className="col-span-6 sm:col-span-3">
+                  <label
+                    htmlFor="phone"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                  >
+                    Phone
+                  </label>
+
+                  <input
+                    value={formik.values.phone}
+                    onBlur={formik.handleBlur}
+                    onChange={formik.handleChange}
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    className="mt-1 w-full rounded-md p-3 border border-gray-200 dark:focus-visible:border-neutral-900 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-neutral-900 dark:text-gray-200"
+                  />
+
+                  {formik.errors.phone && formik.touched.phone ? (
+                    <div
+                      role="alert"
+                      className="rounded border-s-4 flex gap-1 border-red-500 bg-red-50 dark:bg-red-700/10 p-3 mt-2"
+                    >
+                      <p className="block font-medium text-red-800 dark:text-red-50">
+                        {formik.errors.phone}
+                      </p>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </div>
+
+                <div className="col-span-6">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                  >
+                    Email
+                  </label>
+
+                  <input
+                    value={formik.values.email}
+                    onBlur={formik.handleBlur}
+                    onChange={formik.handleChange}
+                    type="email"
+                    id="email"
+                    name="email"
+                    className="mt-1 w-full rounded-md p-3 border border-gray-200 dark:focus-visible:border-neutral-900 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-neutral-900 dark:text-gray-200"
+                  />
+
+                  {formik.errors.email && formik.touched.email ? (
+                    <div
+                      role="alert"
+                      className="rounded border-s-4 flex gap-1 border-red-500 bg-red-50 dark:bg-red-700/10 p-3 mt-2"
+                    >
+                      <p className="block font-medium text-red-800 dark:text-red-50">
+                        {formik.errors.email}
+                      </p>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </div>
+
+                <div className="col-span-6 sm:col-span-3">
+                  <label
+                    htmlFor="password"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                  >
+                    Password
+                  </label>
+
+                  <input
+                    value={formik.values.password}
+                    onBlur={formik.handleBlur}
+                    onChange={formik.handleChange}
+                    type="password"
+                    id="password"
+                    name="password"
+                    className="mt-1 w-full rounded-md p-3 border border-gray-200 dark:focus-visible:border-neutral-900 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-neutral-900 dark:text-gray-200"
+                  />
+
+                  {formik.errors.password && formik.touched.password ? (
+                    <div
+                      role="alert"
+                      className="rounded border-s-4 flex gap-1 border-red-500 bg-red-50 dark:bg-red-700/10 p-3 mt-2"
+                    >
+                      <p className="block font-medium text-red-800 dark:text-red-50">
+                        {formik.errors.password}
+                      </p>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </div>
+
+                <div className="col-span-6 sm:col-span-3">
+                  <label
+                    htmlFor="rePassword"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                  >
+                    Password Confirmation
+                  </label>
+
+                  <input
+                    value={formik.values.rePassword}
+                    onBlur={formik.handleBlur}
+                    onChange={formik.handleChange}
+                    type="password"
+                    id="rePassword"
+                    name="rePassword"
+                    className="mt-1 w-full rounded-md p-3 border border-gray-200 dark:focus-visible:border-neutral-900 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-neutral-900 dark:text-gray-200"
+                  />
+
+                  {formik.errors.rePassword && formik.touched.rePassword ? (
+                    <div
+                      role="alert"
+                      className="rounded border-s-4 flex gap-1 border-red-500 bg-red-50 dark:bg-red-700/10 p-3 mt-2"
+                    >
+                      <p className="block font-medium text-red-800 dark:text-red-50">
+                        {formik.errors.rePassword}
+                      </p>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </div>
+
+                <div className="col-span-6">
+                  <label htmlFor="MarketingAccept" className="flex gap-4">
+                    <input
+                      type="checkbox"
+                      id="MarketingAccept"
+                      name="marketing_accept"
+                      className="h-5 w-5 rounded-md border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-neutral-900 dark:focus:ring-offset-gray-900"
+                    />
+
+                    <span className="text-sm text-gray-700 dark:text-gray-200">
+                      I want to receive emails about events, product updates and
+                      company announcements.
+                    </span>
+                  </label>
+                </div>
+
+                <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
+                  <button
+                    disabled={!(formik.isValid && formik.dirty)}
+                    type="submit"
+                    className="flex items-center shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition  focus:outline-none focus:ring active:text-blue-500 hover:bg-blue-700 hover:text-white"
+                  >
+                    Create an account
+                    {Loading ? <LoadingDots className="bg-white" /> : ""}
+                  </button>
+
+                  <p className="mt-4 text-sm text-gray-500 sm:mt-0 dark:text-gray-400">
+                    Already have an account?{" "}
+                    <Link
+                      to="/login"
+                      className="text-gray-700 underline dark:text-gray-200"
+                    >
+                      Log in
+                    </Link>
+                    .
+                  </p>
+                </div>
+              </form>
             </div>
-          ) : (
-            ""
-          )}
-
-          {/* <label htmlFor="UploadFile"> Upload File</label>
-        <input onChange={(e) =>
-          formik.setFieldValue('photo', e.currentTarget.files[0])
-        } className='form-control mb-2' type='file' name='photo' accept='image/*' id='UploadFile' /> */}
-
-          {Loading ? (
-            <button type="submit" className="btn bg-main text-white mt-2">
-              <i className="fas fa-spinner fa-spin"></i>
-            </button>
-          ) : (
-            <button
-              disabled={!(formik.isValid && formik.dirty)}
-              type="submit"
-              className="btn bg-main text-white mt-2"
-            >
-              Register
-            </button>
-          )}
-
-          {/* <button type='submit' className='btn bg-main text-white mt-2'>Register</button> */}
-        </form>
-      </div>
+          </main>
+        </div>
+      </section>
     </>
   );
 }

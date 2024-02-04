@@ -1,22 +1,24 @@
-import axios from 'axios'
-import React from 'react'
-import { useQuery } from 'react-query'
+import axios from "axios";
+import React from "react";
+import { useQuery } from "react-query";
 import Slider from "react-slick";
 // import Style from './CategorySlider.module.css'
+import { Link } from "react-router-dom";
+
+import hat from "../../Assets/images/hoodie-1.avif";
 
 export default function CategorySlider() {
   function getCategories() {
-    return axios.get(`https://ecommerce.routemisr.com/api/v1/categories`)
+    return axios.get(`https://ecommerce.routemisr.com/api/v1/categories`);
   }
-  let { data, isLoading, isError } = useQuery('CategorySlider', getCategories)
+  let { data, isLoading, isError } = useQuery("CategorySlider", getCategories);
 
   var settings = {
     dots: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 7,
-    slidesToScroll: 2,
-    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 4,
     initialSlide: 0,
     responsive: [
       {
@@ -25,8 +27,8 @@ export default function CategorySlider() {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 600,
@@ -34,26 +36,59 @@ export default function CategorySlider() {
           slidesToShow: 2,
           slidesToScroll: 2,
           initialSlide: 2,
-          arrows: false
-        }
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          arrows: false
-        }
-      }
-    ]
+        },
+      },
+    ],
   };
 
-  return <>
-    {data?.data.data ? <Slider className='mb-5' {...settings}>
-      {data?.data.data.map((category) => <div key={category._id}><img className='fit mb-2 w-100' src={category.image} alt={category.name}></img> <h2 className="h6 text-center">{category.name}</h2></div>
-      )}
-    </Slider > : ''
-    }
-  </>
-
+  return (
+    <>
+      <div className="w-full overflow-x-auto pb-6 pt-1">
+        <ul className="flex animate-carousel gap-4">
+          {data?.data.data ? (
+            <>
+              {data?.data.data.map((category) => (
+                <li
+                  key={category._id}
+                  className="relative aspect-square h-[30vh] max-h-[275px] w-2/3 max-w-[475px] flex-none md:w-1/3"
+                >
+                  <Link className="relative h-full w-full" to="/">
+                    <div className="group flex h-full w-full items-center justify-center overflow-hidden rounded-lg border bg-white hover:border-blue-600 dark:bg-black relative border-neutral-200 dark:border-neutral-800">
+                      <img
+                        className="relative h-full w-full object-contain transition duration-300 ease-in-out group-hover:scale-105"
+                        src={hat}
+                        alt={category.name}
+                      />
+                      <div className="absolute bottom-0 left-0 flex w-full px-4 pb-4 @container/label">
+                        <div className="flex items-center rounded-full border bg-white/70 p-1 text-xs font-semibold text-black backdrop-blur-md dark:border-neutral-800 dark:bg-black/70 dark:text-white">
+                          <h3 className="mr-4 line-clamp-2 flex-grow pl-2 leading-none tracking-tight">
+                            {category.name}
+                          </h3>
+                          <p className="flex-none rounded-full bg-blue-600 p-2 text-white">
+                            $15.00
+                            <span className="ml-1 inline @[275px]/label:inline">
+                              USD
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </li>
+              ))}
+            </>
+          ) : (
+            ""
+          )}
+        </ul>
+      </div>
+    </>
+  );
 }

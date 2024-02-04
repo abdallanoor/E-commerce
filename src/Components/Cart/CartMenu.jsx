@@ -8,6 +8,7 @@ import {
   PlusIcon,
 } from "@heroicons/react/24/outline";
 import logo from "../../Assets/images/logo512.png";
+import LoadingDots from "./../LoadingDots/LoadingDots";
 
 export default function CartMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -69,7 +70,8 @@ export default function CartMenu() {
                             aria-disabled="false"
                             className="ease flex h-[17px] w-[17px] items-center justify-center rounded-full bg-neutral-500 transition-all duration-200"
                           >
-                            <XMarkIcon className="hover:text-accent-3 mx-[1px] h-4 w-4 text-white dark:text-black" />
+                            <LoadingDots className="bg-white" />
+                            {/* <XMarkIcon className="hover:text-accent-3 mx-[1px] h-4 w-4 text-white dark:text-black" /> */}
                           </button>
                           <p
                             aria-live="polite"
@@ -112,7 +114,8 @@ export default function CartMenu() {
                               aria-disabled="false"
                               className="ease flex h-full min-w-[36px] max-w-[36px] flex-none items-center justify-center rounded-full px-2 transition-all duration-200 hover:border-neutral-800 hover:opacity-80 ml-auto"
                             >
-                              <MinusIcon className="h-4 w-4 dark:text-neutral-500" />
+                              {/* <MinusIcon className="h-4 w-4 dark:text-neutral-500" /> */}
+                              <LoadingDots className="bg-black dark:bg-white" />
                             </button>
                             <p
                               aria-live="polite"
