@@ -69,19 +69,19 @@ export default function Register() {
   return (
     <>
       <section>
-        <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
-          <section className="relative flex h-32 items-end bg-neutral-900 lg:col-span-5 lg:h-full xl:col-span-6">
+        <div className="lg:grid h-section lg:grid-cols-12">
+          <section className="relative flex h-32 items-end bg-neutral-900 lg:col-span-5 lg:h-full xl:col-span-5">
             <img
               alt="register"
               src={register}
-              className="absolute inset-0 h-full w-full object-cover opacity-80"
+              className="absolute inset-0 h-full w-full object-cover opacity-70"
             />
 
             <div className="hidden lg:relative lg:block lg:p-12">
-              <a className="block text-white" href="/">
+              <Link className="block text-white" to="/">
                 <span className="sr-only">Home</span>
                 <img src={logo} alt="logo" className="h-8 sm:h-10" />
-              </a>
+              </Link>
 
               <h2 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
                 Welcome to Pixel Store
@@ -94,16 +94,16 @@ export default function Register() {
             </div>
           </section>
 
-          <main className="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6">
+          <main className="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-7">
             <div className="max-w-xl lg:max-w-3xl">
               <div className="relative -mt-16 block lg:hidden">
-                <a
+                <Link
                   className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-white text-blue-600 sm:h-20 sm:w-20 dark:bg-black"
-                  href="/"
+                  to="/"
                 >
                   <span className="sr-only">Home</span>
                   <img src={logo2} alt="Logo2" className="h-8 sm:h-10" />
-                </a>
+                </Link>
 
                 <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl dark:text-white">
                   Welcome to Pixel Store
@@ -147,7 +147,7 @@ export default function Register() {
                     type="text"
                     id="name"
                     name="name"
-                    className="mt-1 w-full rounded-md p-3 border border-gray-200 dark:focus-visible:border-neutral-900 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-neutral-900 dark:text-gray-200"
+                    className="mt-1 w-full rounded-md p-4 border border-gray-200 dark:focus-visible:border-neutral-900 bg-white text-sm text-gray-700 shadow-sm dark:border-neutral-600 dark:bg-neutral-900 dark:text-gray-200"
                   />
                   {formik.errors.name && formik.touched.name ? (
                     <div
@@ -178,7 +178,7 @@ export default function Register() {
                     type="tel"
                     id="phone"
                     name="phone"
-                    className="mt-1 w-full rounded-md p-3 border border-gray-200 dark:focus-visible:border-neutral-900 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-neutral-900 dark:text-gray-200"
+                    className="mt-1 w-full rounded-md p-4 border border-gray-200 dark:focus-visible:border-neutral-900 bg-white text-sm text-gray-700 shadow-sm dark:border-neutral-600 dark:bg-neutral-900 dark:text-gray-200"
                   />
 
                   {formik.errors.phone && formik.touched.phone ? (
@@ -210,7 +210,7 @@ export default function Register() {
                     type="email"
                     id="email"
                     name="email"
-                    className="mt-1 w-full rounded-md p-3 border border-gray-200 dark:focus-visible:border-neutral-900 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-neutral-900 dark:text-gray-200"
+                    className="mt-1 w-full rounded-md p-4 border border-gray-200 dark:focus-visible:border-neutral-900 bg-white text-sm text-gray-700 shadow-sm dark:border-neutral-600 dark:bg-neutral-900 dark:text-gray-200"
                   />
 
                   {formik.errors.email && formik.touched.email ? (
@@ -242,7 +242,7 @@ export default function Register() {
                     type="password"
                     id="password"
                     name="password"
-                    className="mt-1 w-full rounded-md p-3 border border-gray-200 dark:focus-visible:border-neutral-900 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-neutral-900 dark:text-gray-200"
+                    className="mt-1 w-full rounded-md p-4 border border-gray-200 dark:focus-visible:border-neutral-900 bg-white text-sm text-gray-700 shadow-sm dark:border-neutral-600 dark:bg-neutral-900 dark:text-gray-200"
                   />
 
                   {formik.errors.password && formik.touched.password ? (
@@ -274,7 +274,7 @@ export default function Register() {
                     type="password"
                     id="rePassword"
                     name="rePassword"
-                    className="mt-1 w-full rounded-md p-3 border border-gray-200 dark:focus-visible:border-neutral-900 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-neutral-900 dark:text-gray-200"
+                    className="mt-1 w-full rounded-md p-4 border border-gray-200 dark:focus-visible:border-neutral-900 bg-white text-sm text-gray-700 shadow-sm dark:border-neutral-600 dark:bg-neutral-900 dark:text-gray-200"
                   />
 
                   {formik.errors.rePassword && formik.touched.rePassword ? (
