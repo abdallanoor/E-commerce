@@ -4,14 +4,20 @@ import axios from "axios";
 import { useFormik } from "formik";
 import { useNavigate, Link } from "react-router-dom";
 import * as Yup from "yup";
-import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
+import {
+  AtSymbolIcon,
+  IdentificationIcon,
+  PhoneIcon,
+  LockClosedIcon,
+  CheckCircleIcon,
+} from "@heroicons/react/24/outline";
 import logo from "../../Assets/images/LogoSvg.svg";
 import logo2 from "../../Assets/images/LogoSvg2.svg";
 import register from "../../Assets/images/register.jpg";
 import register2 from "../../Assets/images/register2.jpg";
 
-// import Style from './Register.module.css'
 import LoadingDots from "./../LoadingDots/LoadingDots";
+// import Style from './Register.module.css'
 
 export default function Register() {
   //Navigate
@@ -133,22 +139,26 @@ export default function Register() {
                 className="mt-8 grid grid-cols-6 gap-6"
               >
                 <div className="col-span-6 sm:col-span-3">
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                  >
+                  <label htmlFor="name" className="sr-only">
                     Name
                   </label>
 
-                  <input
-                    value={formik.values.name}
-                    onBlur={formik.handleBlur}
-                    onChange={formik.handleChange}
-                    type="text"
-                    id="name"
-                    name="name"
-                    className="mt-1 w-full rounded-md p-4 border border-gray-200 dark:focus-visible:border-neutral-900 bg-white text-sm text-gray-700 shadow-sm dark:border-neutral-600 dark:bg-neutral-900 dark:text-gray-200"
-                  />
+                  <div className="relative">
+                    <input
+                      value={formik.values.name}
+                      onBlur={formik.handleBlur}
+                      onChange={formik.handleChange}
+                      type="text"
+                      id="name"
+                      name="name"
+                      className="w-full rounded-lg border border-gray-200 p-4 pe-12 text-sm shadow-sm dark:bg-transparent dark:text-white dark:border-neutral-600 dark:placeholder:text-neutral-400"
+                      placeholder="Name"
+                    />
+
+                    <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
+                      <IdentificationIcon className="h-4 w-4 text-gray-400" />
+                    </span>
+                  </div>
                   {formik.errors.name && formik.touched.name ? (
                     <div
                       role="alert"
@@ -164,22 +174,26 @@ export default function Register() {
                 </div>
 
                 <div className="col-span-6 sm:col-span-3">
-                  <label
-                    htmlFor="phone"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                  >
+                  <label htmlFor="phone" className="sr-only">
                     Phone
                   </label>
 
-                  <input
-                    value={formik.values.phone}
-                    onBlur={formik.handleBlur}
-                    onChange={formik.handleChange}
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    className="mt-1 w-full rounded-md p-4 border border-gray-200 dark:focus-visible:border-neutral-900 bg-white text-sm text-gray-700 shadow-sm dark:border-neutral-600 dark:bg-neutral-900 dark:text-gray-200"
-                  />
+                  <div className="relative">
+                    <input
+                      value={formik.values.phone}
+                      onBlur={formik.handleBlur}
+                      onChange={formik.handleChange}
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      className="w-full rounded-lg border border-gray-200 p-4 pe-12 text-sm shadow-sm dark:bg-transparent dark:text-white dark:border-neutral-600 dark:placeholder:text-neutral-400"
+                      placeholder="Phone"
+                    />
+
+                    <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
+                      <PhoneIcon className="h-4 w-4 text-gray-400" />
+                    </span>
+                  </div>
 
                   {formik.errors.phone && formik.touched.phone ? (
                     <div
@@ -196,22 +210,26 @@ export default function Register() {
                 </div>
 
                 <div className="col-span-6">
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                  >
+                  <label htmlFor="email" className="sr-only">
                     Email
                   </label>
 
-                  <input
-                    value={formik.values.email}
-                    onBlur={formik.handleBlur}
-                    onChange={formik.handleChange}
-                    type="email"
-                    id="email"
-                    name="email"
-                    className="mt-1 w-full rounded-md p-4 border border-gray-200 dark:focus-visible:border-neutral-900 bg-white text-sm text-gray-700 shadow-sm dark:border-neutral-600 dark:bg-neutral-900 dark:text-gray-200"
-                  />
+                  <div className="relative">
+                    <input
+                      value={formik.values.email}
+                      onBlur={formik.handleBlur}
+                      onChange={formik.handleChange}
+                      name="email"
+                      id="email"
+                      type="email"
+                      className="w-full rounded-lg border border-gray-200 p-4 pe-12 text-sm shadow-sm dark:bg-transparent dark:text-white dark:border-neutral-600 dark:placeholder:text-neutral-400"
+                      placeholder="Email"
+                    />
+
+                    <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
+                      <AtSymbolIcon className="h-4 w-4 text-gray-400" />
+                    </span>
+                  </div>
 
                   {formik.errors.email && formik.touched.email ? (
                     <div
@@ -228,23 +246,26 @@ export default function Register() {
                 </div>
 
                 <div className="col-span-6 sm:col-span-3">
-                  <label
-                    htmlFor="password"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                  >
+                  <label htmlFor="password" className="sr-only">
                     Password
                   </label>
 
-                  <input
-                    value={formik.values.password}
-                    onBlur={formik.handleBlur}
-                    onChange={formik.handleChange}
-                    type="password"
-                    id="password"
-                    name="password"
-                    className="mt-1 w-full rounded-md p-4 border border-gray-200 dark:focus-visible:border-neutral-900 bg-white text-sm text-gray-700 shadow-sm dark:border-neutral-600 dark:bg-neutral-900 dark:text-gray-200"
-                  />
+                  <div className="relative">
+                    <input
+                      value={formik.values.password}
+                      onBlur={formik.handleBlur}
+                      onChange={formik.handleChange}
+                      type="password"
+                      id="password"
+                      name="password"
+                      className="w-full rounded-lg border border-gray-200 p-4 pe-12 text-sm shadow-sm dark:bg-transparent dark:text-white dark:border-neutral-600 dark:placeholder:text-neutral-400"
+                      placeholder="Password"
+                    />
 
+                    <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
+                      <LockClosedIcon className="h-4 w-4 text-gray-400" />
+                    </span>
+                  </div>
                   {formik.errors.password && formik.touched.password ? (
                     <div
                       role="alert"
@@ -260,22 +281,26 @@ export default function Register() {
                 </div>
 
                 <div className="col-span-6 sm:col-span-3">
-                  <label
-                    htmlFor="rePassword"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                  >
-                    Password Confirmation
+                  <label htmlFor="Password Confirmation" className="sr-only">
+                    Password
                   </label>
 
-                  <input
-                    value={formik.values.rePassword}
-                    onBlur={formik.handleBlur}
-                    onChange={formik.handleChange}
-                    type="password"
-                    id="rePassword"
-                    name="rePassword"
-                    className="mt-1 w-full rounded-md p-4 border border-gray-200 dark:focus-visible:border-neutral-900 bg-white text-sm text-gray-700 shadow-sm dark:border-neutral-600 dark:bg-neutral-900 dark:text-gray-200"
-                  />
+                  <div className="relative">
+                    <input
+                      value={formik.values.rePassword}
+                      onBlur={formik.handleBlur}
+                      onChange={formik.handleChange}
+                      type="password"
+                      id="Password Confirmation"
+                      name="rePassword"
+                      className="w-full rounded-lg border border-gray-200 p-4 pe-12 text-sm shadow-sm dark:bg-transparent dark:text-white dark:border-neutral-600 dark:placeholder:text-neutral-400"
+                      placeholder="Password Confirmation"
+                    />
+
+                    <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
+                      <CheckCircleIcon className="h-4 w-4 text-gray-400" />
+                    </span>
+                  </div>
 
                   {formik.errors.rePassword && formik.touched.rePassword ? (
                     <div
@@ -323,7 +348,7 @@ export default function Register() {
                       to="/login"
                       className="text-gray-700 underline dark:text-gray-200"
                     >
-                      Log in
+                      Login
                     </Link>
                     .
                   </p>
