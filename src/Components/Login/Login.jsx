@@ -66,10 +66,10 @@ export default function Login() {
           <h1 className="text-center text-2xl font-bold  sm:text-3xl">
             Hala! Let's get started
           </h1>
-          <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
+          {/* <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
             Explore fashion trends, enhance your shopping online. Login for
             exclusive deals & seamless purchasing.
-          </p>
+          </p> */}
           <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
             <div>For Test</div>
             <div>Email: abdallah@yahoo.com</div>
