@@ -15,8 +15,8 @@ export default function Home() {
       </Helmet>
 
       <MainSlider />
-      <CategorySlider />
-      {/* <FeaturedProducts /> */}
+      {/* <CategorySlider /> */}
+      <FeaturedProducts />
     </>
   );
 }
