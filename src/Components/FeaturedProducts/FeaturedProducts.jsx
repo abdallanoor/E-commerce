@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 // import Style from './Products.module.css'
 import { cartContext } from "../../Context/CartContext";
 import hat from "../../Assets/images/hat-1.avif";
+import hat2 from "../../Assets/images/hoodie-1.avif";
 //
 import { ToastContainer } from "react-toastify";
 import { toastSuccess } from "../../ToastAlerts";
@@ -97,20 +98,20 @@ export default function FeaturedProducts() {
             {editData.map((product) => (
               <div
                 key={product._id}
-                className="group flex w-full  flex-col overflow-hidden rounded-lg border border-gray-100  bg-white dark:border-neutral-800 dark:bg-transparent shadow-md"
+                className="group flex w-full  flex-col overflow-hidden rounded-lg border border-gray-100  bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-md"
               >
                 <Link
-                  className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl"
+                  className="relative mx-3 mt-3 flex h-96 sm:h-60  overflow-hidden rounded-xl"
                   to={`/ProductDetails/${product.id}`}
                 >
                   <img
-                    className="peer absolute top-0 right-0 h-full w-full object-cover"
-                    src={product.imageCover}
+                    className="peer absolute top-0 right-0 h-full w-full object-cover bg-white dark:bg-neutral-900"
+                    src={hat}
                     alt="product image"
                   />
                   <img
-                    className="peer absolute top-0 -right-96 h-full w-full object-cover transition-all delay-100 duration-1000 hover:right-0 peer-hover:right-0"
-                    src={product.images[0]}
+                    className="peer absolute top-0 -right-full h-full w-full  object-cover transition-all delay-100 duration-1000 hover:right-0 peer-hover:right-0 bg-white dark:bg-neutral-900"
+                    src={hat2}
                     alt="product image"
                   />
                   {/* <!-- <div className="absolute  bottom-0 mb-4 flex space-x-4 w-full justify-center">
@@ -188,7 +189,7 @@ export default function FeaturedProducts() {
                     <div className="absolute bottom-0 left-0 flex w-full px-4 pb-4 @container/label">
                       <div className="flex items-center rounded-full border bg-white/70 p-1 text-xs font-semibold text-black backdrop-blur-md dark:border-neutral-800 dark:bg-black/70 dark:text-white">
                         <h3 className="mr-4 line-clamp-2 flex-grow pl-2 leading-none tracking-tight">
-                          {product.title}
+                          {product.title.split(" ").slice(0, 2).join(" ")}
                         </h3>
                         <p className="flex-none rounded-full bg-blue-600 p-2 text-white">
                           $10.00
