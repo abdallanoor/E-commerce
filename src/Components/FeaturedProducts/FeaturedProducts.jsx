@@ -11,7 +11,9 @@ import hat2 from "../../Assets/images/hoodie-1.avif";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { ToastContainer } from "react-toastify";
 import { toastSuccess } from "../../ToastAlerts";
+import LoadingDots from "./../LoadingDots/LoadingDots";
 export default function FeaturedProducts() {
+  const [Loading, setLoading] = useState(false);
   const [editData, setEditData] = useState([]);
   //getFeaturedProducts
   function getFeaturedProducts() {
@@ -34,7 +36,9 @@ export default function FeaturedProducts() {
   let { addToCart, openCart } = useContext(cartContext);
 
   async function addProduct(productId) {
+    setLoading(true);
     let response = await addToCart(productId);
+    setLoading(false);
     openCart();
   }
   return (
@@ -111,7 +115,11 @@ export default function FeaturedProducts() {
                         className="py-2 px-4 button flex gap-2 items-center"
                       >
                         Add To Cart
-                        <ShoppingCartIcon className="h-4 w-4" />
+                        {Loading ? (
+                          <LoadingDots className="bg-black dark:bg-white" />
+                        ) : (
+                          <ShoppingCartIcon className="h-4 w-4" />
+                        )}
                       </button>
                     </div>
                   </div>
