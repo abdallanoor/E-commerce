@@ -34,7 +34,7 @@ input {
   @apply bg-zinc-50 dark:bg-grayshade-400 text-grayshade-300 dark:text-white inline-block border   dark:border-grayshade-300 py-2 px-3 font-semibold  text-xs rounded-full my-4;
 }
 .button {
-  @apply text-center text-sm rounded-lg text-white bg-blue-600;
+  @apply text-center  rounded-lg text-white bg-blue-600;
 }
 .edit-scroll::-webkit-scrollbar {
   display: none;
