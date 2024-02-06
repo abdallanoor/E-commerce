@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 // import Style from './Products.module.css'
 import { cartContext } from "../../Context/CartContext";
 import hat from "../../Assets/images/hat-1.avif";
-import hat2 from "../../Assets/images/hoodie-1.avif";
+import hat2 from "../../Assets/images/clothes category3.jpg";
 //
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { ToastContainer } from "react-toastify";
@@ -80,7 +80,7 @@ export default function FeaturedProducts() {
                 >
                   <Link to={`/ProductDetails/${product.id}`}>
                     <img
-                      className="w-full dark:bg-neutral-950 rounded-lg self-stretch h-72  max-md:h-96  mb-7 object-cover"
+                      className="w-full dark:bg-neutral-950 rounded-lg self-stretch h-80   mb-7 object-cover"
                       src={product.imageCover}
                       alt={product.title}
                     />
@@ -116,7 +116,7 @@ export default function FeaturedProducts() {
                       >
                         Add To Cart
                         {Loading ? (
-                          <LoadingDots className="bg-black dark:bg-white" />
+                          <LoadingDots className="bg-white" />
                         ) : (
                           <ShoppingCartIcon className="h-4 w-4" />
                         )}
