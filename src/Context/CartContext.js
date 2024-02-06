@@ -33,6 +33,30 @@ async function removeCart(productId) {
   );
   return response;
 }
+async function increaseItemQuantity(productId, count) {
+  let response = await axios.put(
+    `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
+    {
+      count,
+    },
+    {
+      headers,
+    }
+  );
+  return response;
+}
+async function reduceItemQuantity(productId, count) {
+  let response = await axios.put(
+    `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
+    {
+      count,
+    },
+    {
+      headers,
+    }
+  );
+  return response;
+}
 async function updateCart(productId, count) {
   let response = await axios.put(
     `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
@@ -78,6 +102,10 @@ async function getUserOrders() {
 export default function CartContextProvider(props) {
   const [cartId, setCartId] = useState("");
 
+  const [isOpen, setIsOpen] = useState(false);
+  const openCart = () => setIsOpen(true);
+  const closeCart = () => setIsOpen(false);
+
   async function getCartId() {
     let { data } = await axios
       .get("https://ecommerce.routemisr.com/api/v1/cart", { headers })
@@ -95,11 +123,16 @@ export default function CartContextProvider(props) {
         addToCart,
         getLoggedUserCart,
         removeCart,
+        increaseItemQuantity,
         updateCart,
+        reduceItemQuantity,
         removeAllCarts,
         onlinePayment,
         cartId,
         getUserOrders,
+        isOpen,
+        openCart,
+        closeCart,
       }}
     >
       {props.children}

@@ -72,7 +72,7 @@ export default function Login() {
           </p> */}
           <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
             <div>For Test</div>
-            <div className=" no-underline">Email: abdallah@yahoo.com</div>
+            <div>Email: abdallah@yahoo.com</div>
             <div>Password: Abdo123</div>
           </p>
 

@@ -8,7 +8,6 @@ import Profile from "./Components/Profile/Profile";
 import Register from "./Components/Register/Register";
 import Products from "./Components/Products/Products";
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
-import Cart from "./Components/Cart/Cart";
 import Categories from "./Components/Categories/Categories";
 import Brands from "./Components/Brands/Brands";
 import { userContext } from "./Context/UserContext";
@@ -76,15 +75,6 @@ let Routers = createBrowserRouter([
           <ProtectedRoute>
             {" "}
             <Brands />{" "}
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "cart",
-        element: (
-          <ProtectedRoute>
-            {" "}
-            <Cart />{" "}
           </ProtectedRoute>
         ),
       },
