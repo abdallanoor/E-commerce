@@ -15,6 +15,7 @@ export default function MobileMenu() {
     localStorage.removeItem("userToken");
     setUserToken(null);
     navigate("/login");
+    // window.location.reload(false);
   }
   //
   const [isOpen, setIsOpen] = useState(false);
@@ -73,8 +74,8 @@ export default function MobileMenu() {
                     <XMarkIcon className="h-6" />
                   </button>
                   <button
+                    onClick={closeMobileMenu}
                     className="mb-4 flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors dark:border-neutral-700 dark:text-white"
-
                   >
                     <DarkMode className="h-6" />
                   </button>
@@ -84,18 +85,24 @@ export default function MobileMenu() {
                   <Search />
                 </div>
                 <ul className="flex w-full flex-col">
-                  <li className="py-2 text-xl text-black transition-colors hover:text-neutral-500 dark:text-white">
+                  <li
+                    onClick={closeMobileMenu}
+                    className="py-2 text-xl text-black transition-colors hover:text-neutral-500 dark:text-white"
+                  >
                     <Link to="/search">All Products</Link>
                   </li>
-                  <li className="py-2 text-xl text-black transition-colors hover:text-neutral-500 dark:text-white">
-                    <Link to="/search/shirts">Categories</Link>
+                  <li
+                    onClick={closeMobileMenu}
+                    className="py-2 text-xl text-black transition-colors hover:text-neutral-500 dark:text-white"
+                  >
+                    <Link to="/search/shirts">Orders</Link>
                   </li>
                   <li className="py-2 text-xl text-black transition-colors hover:text-neutral-500 dark:text-white">
                     <Link to="/search/stickers"></Link>
                   </li>
                   {userToken !== null ? (
                     <>
-                      <li className="">
+                      <li onClick={closeMobileMenu} className="">
                         <span
                           onClick={() => logout()}
                           className="text-neutral-500 hover:text-black  dark:text-neutral-400 dark:hover:text-neutral-300 cursor-pointer"
@@ -106,7 +113,10 @@ export default function MobileMenu() {
                     </>
                   ) : (
                     <>
-                      <li className="text-neutral-500 hover:text-black  dark:text-neutral-400 dark:hover:text-neutral-300">
+                      <li
+                        onClick={closeMobileMenu}
+                        className="text-neutral-500 hover:text-black  dark:text-neutral-400 dark:hover:text-neutral-300"
+                      >
                         <Link to="/login">Login</Link>
                       </li>
                     </>

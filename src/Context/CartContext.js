@@ -100,6 +100,7 @@ async function getUserOrders() {
   return response.data;
 }
 export default function CartContextProvider(props) {
+  const [cartDetails, setCartDetails] = useState([]);
   const [cartId, setCartId] = useState("");
 
   const [isOpen, setIsOpen] = useState(false);
@@ -113,10 +114,15 @@ export default function CartContextProvider(props) {
     setCartId(data?.data._id);
   }
 
+  //get cart
+  async function getCart() {
+    let { data } = await getLoggedUserCart();
+    // console.log(data);
+    setCartDetails(data);
+  }
   useEffect(() => {
     getCartId();
   }, []);
-
   return (
     <cartContext.Provider
       value={{
@@ -133,6 +139,10 @@ export default function CartContextProvider(props) {
         isOpen,
         openCart,
         closeCart,
+        getCartId,
+        cartDetails,
+        setCartDetails,
+        getCart,
       }}
     >
       {props.children}

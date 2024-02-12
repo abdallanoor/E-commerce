@@ -155,7 +155,7 @@ export default function Navbar() {
                   className="text-neutral-500 hover:text-black  dark:text-neutral-400 dark:hover:text-neutral-300"
                   to="/search/shirts"
                 >
-                  Categories
+                  Orders
                 </Link>
               </li>
               {userToken !== null ? (

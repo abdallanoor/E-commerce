@@ -1,13 +1,63 @@
-import React from 'react'
+import React from "react";
 // import Style from './Notfound.module.css'
+import { Link } from 'react-router-dom';
 
 export default function Notfound() {
-  return <>
-    <div className='p-5'>
-      <h2>Not Found</h2>
-      <p>This page doesn’t exist.</p>
-      <p>If this is a mistake, let us know, and we will try to fix it!s</p>
-    </div>
-  </>
+  return (
+    <>
+      {/* <main className="flex items-center justify-center min-h-[calc(100vh-100px)] h-screen p-8 md:p-16">
+        <section className="mx-auto  w-full flex items-center justify-center flex-col">
+          <div className="flex items-center justify-center absolute inset-0  flex-col lg:flex-row">
+            <div className="flex items-center justify-center h-full w-full">
+              <div className="texture-animated h-full w-full lg:h-[85%] lg:w-[85%] 3xl:h-full 3xl:w-full"></div>
+            </div>
+            <div className="flex items-center justify-center h-full w-full">
+              <div className="texture-animated h-full w-full lg:h-[85%] lg:w-[85%] 3xl:h-full 3xl:w-full"></div>
+            </div>
+          </div>
+          <h1 class=" text-[130px] font-bold leading-[152px]">404</h1>
+          <h2 class="heading2 text-center text-white">
+            Oops! The page does not exist
+          </h2>
+          <div class="my-10 w-full md:w-[70%]"><p class="base-regular text-center text-white-800">Sorry! We couldn’t find the page.</p></div>
+          <a
+            class="flex items-center justify-center min-h-[48px] cursor-pointer rounded-full  bg-purple px-6 py-3  text-[14px] font-semibold leading-[16px] text-white"
+            href="/"
+          >
+            Go back to Homepage →
+          </a>
+        </section>
+      </main> */}
+      <main class="flex items-center justify-center p-2 md:p-16 h-screen relative z-0 bg-black">
+        <section class="flex items-center  justify-center mx-auto flex-col">
+          <h1 class="text-white text-[130px] font-extrabold leading-[152px]">
+            404
+          </h1>
+          <h2 class="text-5xl font-bold text-center text-white leading-[70px]">
+            Oops! The page does not exist
+          </h2>
+          <div class="my-10 w-full ">
+            <p class=" text-center text-blue-600 text-2xl leading-[31px]">
+              Sorry! We couldn’t find the page.
+            </p>
+          </div>
+          <Link
+            class="flex items-center justify-center min-h-[48px] cursor-pointer rounded-full  bg-blue-600 px-6 py-3  text-[14px] font-semibold leading-[16px] text-white"
+            to="/"
+          >
+            Go back to Homepage →
+          </Link>
 
+          <div class="flex items-center justify-center absolute inset-0 z-[-1] flex-col lg:flex-row">
+            <div class="flex items-center justify-center h-full w-full">
+              <div class="texture-animated h-full w-full lg:h-[85%] lg:w-[85%] 3xl:h-full 3xl:w-full"></div>
+            </div>
+            <div class="flex items-center justify-center h-full w-full">
+              <div class="texture-animated h-full w-full lg:h-[85%] lg:w-[85%] 3xl:h-full 3xl:w-full"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </>
+  );
 }

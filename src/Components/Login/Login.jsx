@@ -46,6 +46,7 @@ export default function Login() {
       //set Token in var.. userToken
       setUserToken(data.token);
       Navigate("/");
+      window.location.reload(false);
     }
   }
 

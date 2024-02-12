@@ -9,12 +9,10 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <meta charSet="utf-8" />
         <title>Pixel Srote</title>
-        <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
 
-      <MainSlider />
+      {/* <MainSlider /> */}
       {/* <CategorySlider /> */}
       <FeaturedProducts />
     </>

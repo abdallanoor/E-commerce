@@ -96,9 +96,9 @@ let Routers = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
-      { path: "*", element: <Notfound /> },
     ],
   },
+  { path: "*", element: <Notfound /> },
 ]);
 
 function App() {

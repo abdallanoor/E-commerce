@@ -17,7 +17,6 @@ import { store } from "./Redux/Store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-
 const queryClient = new QueryClient();
 root.render(
   <Provider store={store}>

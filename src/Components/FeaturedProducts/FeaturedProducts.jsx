@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import { useQuery } from "react-query";
 import { Triangle } from "react-loader-spinner";
@@ -12,38 +12,75 @@ import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { ToastContainer } from "react-toastify";
 import { toastSuccess } from "../../ToastAlerts";
 import LoadingDots from "./../LoadingDots/LoadingDots";
+import FilterCategory from "./../FilterCategory/FilterCategory";
+import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
+
+import clsx from "clsx";
+
 export default function FeaturedProducts() {
-  const [Loading, setLoading] = useState(false);
+  const [productloading, setProductLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [editData, setEditData] = useState([]);
-  //getFeaturedProducts
+  const [categoryData, setCategoryData] = useState([]);
+  const [selectedCat, setSelectedCat] = useState(0);
+
   function getFeaturedProducts() {
-    return axios.get(`https://ecommerce.routemisr.com/api/v1/products`);
+    setProductLoading(true);
+    axios
+      .get(`https://ecommerce.routemisr.com/api/v1/products`)
+      .then((response) => {
+        setEditData(response?.data?.data.reverse());
+        setSelectedCat(0);
+        setProductLoading(false);
+      });
   }
-  let { data, isLoading, isFetching, isError, refetch } = useQuery(
-    "fraturedProducts",
-    getFeaturedProducts,
-    {
-      // cacheTime: 3000,
-      // refetchOnMount: false,
-      // staleTime: 30000,
-      // refetchInterval: 1000
-    }
-  );
-  if (data?.data.data.length > 4) {
-    setEditData(data?.data.data.reverse().splice(0, 3));
+  // console.log(data);
+  function getCategories() {
+    axios
+      .get(`https://ecommerce.routemisr.com/api/v1/categories`)
+      .then((response) => {
+        setCategoryData(response?.data?.data);
+        setSelectedCat(response?.data?.data._id);
+      });
   }
+  // function getCategories() {
+  //   return axios.get(`https://ecommerce.routemisr.com/api/v1/categories`);
+  // }
+  // const categories = useQuery("filterCategory", getCategories, {});
+
+  function getAllCategories(id) {
+    setProductLoading(true);
+    axios
+      .get(`https://ecommerce.routemisr.com/api/v1/products/?category=${id}`)
+      .then((response) => {
+        setEditData(response?.data?.data);
+        console.log(response?.data?.data);
+        setProductLoading(false);
+      });
+  }
+  // if (data?.data.data.length > 4) {
+  //   setEditData(data?.data.data.reverse().splice(0, 3));
+  // }
   //Add To Cart
-  let { addToCart, openCart } = useContext(cartContext);
+  let { addToCart, openCart, getCart, getCartId } = useContext(cartContext);
 
   async function addProduct(productId) {
     setLoading(true);
     let response = await addToCart(productId);
     setLoading(false);
+    getCart();
     openCart();
   }
+  useEffect(() => {
+    getFeaturedProducts();
+    getCategories();
+  }, []);
+  const skeleton =
+    "w-full h-6 animate-pulse rounded bg-neutral-200 dark:bg-neutral-700";
+
   return (
     <>
-      {/* <h1 className="mb-3">Featured Products</h1> */}
+      {/* <h1 className="mb-3">Featured Products</h1>
       <ToastContainer
         position="bottom-left"
         autoClose={3000}
@@ -55,32 +92,59 @@ export default function FeaturedProducts() {
         draggable
         pauseOnHover
         theme="light"
-      />
-      {isLoading ? (
-        <div className="w-full py-5 flex justify-center ">
-          <Triangle
-            visible
-            height="200"
-            width="200"
-            color="#2563eb"
-            ariaLabel="triangle-loading"
-            wrapperStyle={{ fontSize: "150px" }}
-            wrapperClassNameclassName="w-full col-span-3 flex justify-center m-auto"
-          />
-        </div>
-      ) : (
-        <section className="wrapper min-h-screen py-10">
-          <div className="w-full">
-            <h1 className="text-3xl font-bold mb-10">Featured Products</h1>
-            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 md:grid-cols-2 lg:gap-x-12 lg:gap-y-7 gap-4 m-auto">
-              {editData.map((product) => (
+      /> */}
+      <section className="wrapper">
+        <h1 className="text-3xl font-bold mb-10">Featured Products</h1>
+        <div className="w-full flex lg:flex-row flex-col-reverse">
+          <div className="lg:w-10/12 md:w-10/12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 md:grid-cols-2 lg:gap-7 gap-4 m-auto">
+            {productloading ? (
+              <>
+                <div className="w-full animate-pulse">
+                  <div className="w-full h-64 bg-gray-300 rounded-lg md:h-72 dark:bg-neutral-700"></div>
+
+                  <h1 className="w-56 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-grayshade-100"></h1>
+                  <p className="w-24 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-grayshade-100"></p>
+                </div>
+                <div className="w-full animate-pulse">
+                  <div className="w-full h-64 bg-gray-300 rounded-lg md:h-72 dark:bg-neutral-700"></div>
+
+                  <h1 className="w-56 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-grayshade-100"></h1>
+                  <p className="w-24 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-grayshade-100"></p>
+                </div>
+                <div className="w-full animate-pulse">
+                  <div className="w-full h-64 bg-gray-300 rounded-lg md:h-72 dark:bg-neutral-700"></div>
+
+                  <h1 className="w-56 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-grayshade-100"></h1>
+                  <p className="w-24 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-grayshade-100"></p>
+                </div>
+                <div className="w-full animate-pulse">
+                  <div className="w-full h-64 bg-gray-300 rounded-lg md:h-72 dark:bg-neutral-700"></div>
+
+                  <h1 className="w-56 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-grayshade-100"></h1>
+                  <p className="w-24 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-grayshade-100"></p>
+                </div>
+                <div className="w-full animate-pulse">
+                  <div className="w-full h-64 bg-gray-300 rounded-lg md:h-72 dark:bg-neutral-700"></div>
+
+                  <h1 className="w-56 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-grayshade-100"></h1>
+                  <p className="w-24 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-grayshade-100"></p>
+                </div>
+                <div className="w-full animate-pulse">
+                  <div className="w-full h-64 bg-gray-300 rounded-lg md:h-72 dark:bg-neutral-700"></div>
+
+                  <h1 className="w-56 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-grayshade-100"></h1>
+                  <p className="w-24 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-grayshade-100"></p>
+                </div>
+              </>
+            ) : (
+              editData.map((product) => (
                 <div
-                  key={product._id}
-                  className="md:p-4 lg:p-7 p-3  rounded-lg border border-gray-100  bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-md w-full justify-center justify-items-center justify-self-center"
+                  key={product.id}
+                  className="md:p-4 lg:p-7 p-3 rounded-lg border border-gray-100  bg-white dark:border-neutral-800 dark:bg-grayshade-500 shadow-md w-full justify-center justify-items-center justify-self-center animate-fadeIn"
                 >
                   <Link to={`/ProductDetails/${product.id}`}>
                     <img
-                      className="w-full dark:bg-neutral-950 rounded-lg self-stretch h-80   mb-7 object-cover"
+                      className="w-full rounded-lg self-stretch h-72 min-h-52 mb-7 object-cover"
                       src={product.imageCover}
                       alt={product.title}
                     />
@@ -90,7 +154,7 @@ export default function FeaturedProducts() {
                       {product.title.split(" ").slice(0, 3).join(" ")}
                     </p>
                     <p className="text-grayshade-100 dark:text-grayshade-50 text-xs">
-                      {product.title.split(" ").slice(0, 2).join(" ")}...
+                      {product.description.slice(0, 25)}...
                       <Link
                         className="font-semibold text-grayshade-100 dark:text-white text-xs ml-1"
                         to={`/ProductDetails/${product.id}`}
@@ -106,7 +170,7 @@ export default function FeaturedProducts() {
                         Price
                       </p>
                       <p className="font-semibold text-grayshade-300 dark:text-white text-lg">
-                        {product.price} EGP
+                        $ {product.price}
                       </p>
                     </div>
                     <div className="flex text-white justify-between items-center">
@@ -115,7 +179,7 @@ export default function FeaturedProducts() {
                         className="py-2 px-4 button flex gap-2 items-center"
                       >
                         Add To Cart
-                        {Loading ? (
+                        {loading ? (
                           <LoadingDots className="bg-white" />
                         ) : (
                           <ShoppingCartIcon className="h-4 w-4" />
@@ -124,61 +188,84 @@ export default function FeaturedProducts() {
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-            {/* <div className="lg:w-10/12 md:w-10/12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 md:grid-cols-2 lg:gap-7 gap-4 m-auto">
-              {editData.map((product) => (
-                <div
-                  key={product._id}
-                  className="md:p-4 lg:p-7 p-3  rounded-lg border border-gray-100  bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-md w-full justify-center justify-items-center justify-self-center"
-                >
-                  <Link to={`/ProductDetails/${product.id}`}>
-                    <img
-                      className="w-full dark:bg-neutral-950 rounded-lg self-stretch h-72  max-md:h-96  mb-7 object-cover"
-                      src={product.imageCover}
-                      alt={product.title}
-                    />
-                  </Link>
-                  <div>
-                    <p className="font-semibold text-xl mb-2 h-auto">
-                      {product.title.split(" ").slice(0, 3).join(" ")}
-                    </p>
-                    <p className="text-grayshade-100 dark:text-grayshade-50 text-xs">
-                      {product.title.split(" ").slice(0, 2).join(" ")}...
-                      <Link
-                        className="font-semibold text-grayshade-100 dark:text-white text-xs ml-1"
-                        to={`/ProductDetails/${product.id}`}
-                      >
-                        Read More
-                      </Link>
-                    </p>
-                    <span className="lable">{product.category.name}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <p className="text-grayshade-100 dark:text-grayshade-50 text-xs">
-                        Price
-                      </p>
-                      <p className="font-semibold text-grayshade-300 dark:text-white text-lg">
-                        {product.price} EGP
-                      </p>
-                    </div>
-                    <div className="flex text-white justify-between items-center">
-                      <button
-                        onClick={() => addProduct(product.id)}
-                        className="py-2 px-4 button flex gap-2 items-center"
-                      >
-                        Add To Cart
-                        <ShoppingCartIcon className="h-4 w-4" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div> */}
+              ))
+            )}
+            {editData.length == 0 && (
+              <p className="font-semibold flex flex-col items-center justify-center text-xl mb-20 w-full">
+                <ExclamationTriangleIcon className=" w-32" /> Sorry Products Is
+                Not Available..
+              </p>
+            )}
           </div>
+          <FilterCategory
+            setEditData={setEditData}
+            getAllCategories={getAllCategories}
+            getFeaturedProducts={getFeaturedProducts}
+            categoryData={categoryData}
+            selectedCat={selectedCat}
+            setSelectedCat={setSelectedCat}
+          />
+        </div>
+      </section>
+    </>
+  );
+}
 
-          {/* <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+// editData.map((product) => (
+//   <div
+//     key={product._id}
+//     className="md:p-4 lg:p-7 p-3 rounded-lg border border-gray-100  bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-md w-full justify-center justify-items-center justify-self-center"
+//   >
+//     <Link to={`/ProductDetails/${product.id}`}>
+//       <img
+//         className="w-full dark:bg-neutral-950 rounded-lg self-stretch h-80   mb-7 object-cover"
+//         src={product.imageCover}
+//         alt={product.title}
+//       />
+//     </Link>
+//     <div>
+//       <p className="font-semibold text-xl mb-2 h-auto">
+//         {product.title.split(" ").slice(0, 3).join(" ")}
+//       </p>
+//       <p className="text-grayshade-100 dark:text-grayshade-50 text-xs">
+//         {product.title.split(" ").slice(0, 2).join(" ")}...
+//         <Link
+//           className="font-semibold text-grayshade-100 dark:text-white text-xs ml-1"
+//           to={`/ProductDetails/${product.id}`}
+//         >
+//           Read More
+//         </Link>
+//       </p>
+//       <span className="lable">{product.category.name}</span>
+//     </div>
+//     <div className="flex justify-between items-center">
+//       <div>
+//         <p className="text-grayshade-100 dark:text-grayshade-50 text-xs">
+//           Price
+//         </p>
+//         <p className="font-semibold text-grayshade-300 dark:text-white text-lg">
+//           {product.price} EGP
+//         </p>
+//       </div>
+//       <div className="flex text-white justify-between items-center">
+//         <button
+//           onClick={() => addProduct(product.id)}
+//           className="py-2 px-4 button flex gap-2 items-center"
+//         >
+//           Add To Cart
+//           {loading ? (
+//             <LoadingDots className="bg-white" />
+//           ) : (
+//             <ShoppingCartIcon className="h-4 w-4" />
+//           )}
+//         </button>
+//       </div>
+//     </div>
+//   </div>
+// ))
+
+{
+  /* <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {editData.map((product) => (
               <div
                 key={product._id}
@@ -246,42 +333,5 @@ export default function FeaturedProducts() {
                 </div>
               </div>
             ))}
-          </div> */}
-
-          {/* <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-10">
-            {editData?.map((product) => (
-              <li className="aspect-square transition-opacity animate-fadeIn">
-                <Link
-                  className="relative inline-block h-full w-full  "
-                  to={`/ProductDetails/${product.id}`}
-                >
-                  <div className="group flex h-full w-full items-center justify-center overflow-hidden duration-200 rounded-lg border bg-white hover:border-blue-600 dark:bg-black relative border-neutral-200 dark:border-neutral-800 dark:hover:border-blue-600">
-                    <img
-                      alt="Acme Baby Cap"
-                      className="relative h-full w-full object-cover transition duration-300 ease-in-out group-hover:scale-105 "
-                      src={product.imageCover}
-                      alt={product.title}
-                    />
-                    <div className="absolute bottom-0 left-0 flex w-full px-4 pb-4 @container/label">
-                      <div className="flex items-center rounded-full border bg-white/70 p-1 text-xs font-semibold text-black backdrop-blur-md dark:border-neutral-800 dark:bg-black/70 dark:text-white">
-                        <h3 className="mr-4 line-clamp-2 flex-grow pl-2 leading-none tracking-tight">
-                          {product.title.split(" ").slice(0, 2).join(" ")}
-                        </h3>
-                        <p className="flex-none rounded-full bg-blue-600 p-2 text-white">
-                          $10.00
-                          <span className="ml-1 inline @[275px]/label:inline">
-                            USD
-                          </span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </ul> */}
-        </section>
-      )}
-    </>
-  );
+          </div> */
 }
