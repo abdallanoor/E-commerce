@@ -10,6 +10,8 @@ export default function Profile() {
   const token = localStorage.getItem('userToken');
   const decoded = jwtDecode(token);
 
+  console.log(decoded.id);
+
   return <>
     <h1>Profile</h1>
     <h2>Name : {decoded.name}</h2>

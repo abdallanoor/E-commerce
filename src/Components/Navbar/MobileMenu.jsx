@@ -89,16 +89,13 @@ export default function MobileMenu() {
                     onClick={closeMobileMenu}
                     className="py-2 text-xl text-black transition-colors hover:text-neutral-500 dark:text-white"
                   >
-                    <Link to="/search">All Products</Link>
+                    <Link to="/">All Products</Link>
                   </li>
                   <li
                     onClick={closeMobileMenu}
                     className="py-2 text-xl text-black transition-colors hover:text-neutral-500 dark:text-white"
                   >
-                    <Link to="/search/shirts">Orders</Link>
-                  </li>
-                  <li className="py-2 text-xl text-black transition-colors hover:text-neutral-500 dark:text-white">
-                    <Link to="/search/stickers"></Link>
+                    <Link to="/allorders">Orders</Link>
                   </li>
                   {userToken !== null ? (
                     <>

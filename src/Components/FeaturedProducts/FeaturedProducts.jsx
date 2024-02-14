@@ -5,8 +5,7 @@ import { Triangle } from "react-loader-spinner";
 import { Link } from "react-router-dom";
 // import Style from './Products.module.css'
 import { cartContext } from "../../Context/CartContext";
-import hat from "../../Assets/images/hat-1.avif";
-import hat2 from "../../Assets/images/clothes category3.jpg";
+import noData from "../../Assets/images/No data.svg";
 //
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { ToastContainer } from "react-toastify";
@@ -16,6 +15,7 @@ import FilterCategory from "./../FilterCategory/FilterCategory";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 
 import clsx from "clsx";
+import { userContext } from "./../../Context/UserContext";
 
 export default function FeaturedProducts() {
   const [productloading, setProductLoading] = useState(false);
@@ -63,6 +63,7 @@ export default function FeaturedProducts() {
   // }
   //Add To Cart
   let { addToCart, openCart, getCart, getCartId } = useContext(cartContext);
+  let { userToken } = useContext(userContext);
 
   async function addProduct(productId) {
     setLoading(true);
@@ -75,8 +76,6 @@ export default function FeaturedProducts() {
     getFeaturedProducts();
     getCategories();
   }, []);
-  const skeleton =
-    "w-full h-6 animate-pulse rounded bg-neutral-200 dark:bg-neutral-700";
 
   return (
     <>
@@ -95,8 +94,8 @@ export default function FeaturedProducts() {
       /> */}
       <section className="wrapper">
         <h1 className="text-3xl font-bold mb-10">Featured Products</h1>
-        <div className="w-full flex lg:flex-row flex-col-reverse">
-          <div className="lg:w-10/12 md:w-10/12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 md:grid-cols-2 lg:gap-7 gap-4 m-auto">
+        <div className="w-full flex lg:flex-row flex-col-reverse animate-fadeIn">
+          <div className="lg:w-10/12 md:w-10/12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 md:grid-cols-2 lg:gap-7 gap-4 m-auto animate-fadeIn">
             {productloading ? (
               <>
                 <div className="w-full animate-pulse">
@@ -170,7 +169,7 @@ export default function FeaturedProducts() {
                         Price
                       </p>
                       <p className="font-semibold text-grayshade-300 dark:text-white text-lg">
-                        $ {product.price}
+                        {product.price} EGP
                       </p>
                     </div>
                     <div className="flex text-white justify-between items-center">
@@ -191,10 +190,10 @@ export default function FeaturedProducts() {
               ))
             )}
             {editData.length == 0 && (
-              <p className="font-semibold flex flex-col items-center justify-center text-xl mb-20 w-full">
-                <ExclamationTriangleIcon className=" w-32" /> Sorry Products Is
-                Not Available..
-              </p>
+              <div className="font-semibold flex flex-col items-center justify-center text-xl mb-20 w-full animate-fadeIn">
+                <img src={noData} alt="No Data" className="w-72" />
+                <p>Sorry Products Is Not Available..</p>
+              </div>
             )}
           </div>
           <FilterCategory

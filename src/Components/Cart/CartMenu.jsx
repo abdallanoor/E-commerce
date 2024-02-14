@@ -25,9 +25,11 @@ export default function CartMenu() {
 
   let { userToken } = useContext(userContext);
 
-  useEffect(() => {
-    getCart();
-  }, []);
+  // useEffect(() => {
+  //   if (userToken) {
+  //     getCart();
+  //   }
+  // }, []);
 
   return (
     <>
@@ -181,7 +183,7 @@ export default function CartMenu() {
                 </a>
                 <div className="flex h-16 flex-col justify-between">
                   <p className="flex justify-end space-y-2 text-right text-sm">
-                    $15.00<span className="ml-1 inline">USD</span>
+                    $15.00<span className="ml-1 inline">EGO</span>
                   </p>
                   <div className="ml-auto flex h-9 flex-row items-center rounded-full border border-neutral-200 dark:border-neutral-700">
                     <form action="javascript:throw new Error('A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\'re trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().')">
@@ -254,7 +256,7 @@ export default function CartMenu() {
             <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 dark:border-neutral-700">
               <p>Taxes</p>
               <p className="text-right text-base text-black dark:text-white">
-                $0.00<span className="ml-1 inline">USD</span>
+                $0.00<span className="ml-1 inline">EGO</span>
               </p>
             </div>
             <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1 dark:border-neutral-700">
@@ -264,7 +266,7 @@ export default function CartMenu() {
             <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1 dark:border-neutral-700">
               <p>Total</p>
               <p className="text-right text-base text-black dark:text-white">
-                $15.00<span className="ml-1 inline">USD</span>
+                $15.00<span className="ml-1 inline">EGO</span>
               </p>
             </div>
           </div>

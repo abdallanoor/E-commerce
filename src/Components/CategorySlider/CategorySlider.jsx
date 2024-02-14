@@ -72,9 +72,9 @@ export default function CategorySlider() {
                             {category.name}
                           </h3>
                           <p className="flex-none rounded-full bg-blue-600 p-2 text-white">
-                            $15.00
+                            15.00
                             <span className="ml-1 inline @[275px]/label:inline">
-                              USD
+                              EGP
                             </span>
                           </p>
                         </div>

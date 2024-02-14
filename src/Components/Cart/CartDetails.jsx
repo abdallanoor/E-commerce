@@ -4,7 +4,6 @@ import { XMarkIcon, MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import { cartContext } from "./../../Context/CartContext";
 
-
 export default function CartDetails() {
   const [loading, setLoading] = useState(false);
 
@@ -40,13 +39,13 @@ export default function CartDetails() {
 
   return (
     <div className="flex h-full flex-col justify-between overflow-hidden p-1">
-      <ul className="flex-grow overflow-auto py-4 edit-scroll">
+      <ul className="flex-grow overflow-auto py-4 edit-scroll ">
         {cartDetails?.data?.products.map((product) => (
           <li
             key={product.product.id}
             className="flex w-full flex-col border-b border-neutral-300 dark:border-neutral-700"
           >
-            <div className="relative flex w-full flex-row justify-between px-1 py-4">
+            <div className="relative flex w-full flex-row justify-between px-1 py-4 animate-fadeIn">
               <div className="absolute z-40 -mt-2 ml-[55px]">
                 <button
                   onClick={() => removeItem(product.product.id)}
@@ -84,7 +83,7 @@ export default function CartDetails() {
               </Link>
               <div className="flex h-16 flex-col justify-between">
                 <p className="flex justify-end space-y-2 text-right text-sm">
-                  ${product.price}
+                  {product.price}
                   <span className="ml-1 inline">EGP</span>
                 </p>
                 <div className="ml-auto flex h-9 flex-row items-center rounded-full border border-neutral-200 dark:border-neutral-700">
@@ -127,7 +126,7 @@ export default function CartDetails() {
         <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 dark:border-neutral-700">
           <p>Taxes</p>
           <p className="text-right text-base text-black dark:text-white">
-            $0.00<span className="ml-1 inline">USD</span>
+            0.00<span className="ml-1 inline">EGP</span>
           </p>
         </div>
         <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1 dark:border-neutral-700">
@@ -137,7 +136,7 @@ export default function CartDetails() {
         <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1 dark:border-neutral-700">
           <p>Total</p>
           <p className="text-right text-base text-black dark:text-white">
-            ${cartDetails?.data?.totalCartPrice}
+            {cartDetails?.data?.totalCartPrice}
             <span className="ml-1 inline">EGP</span>
           </p>
         </div>

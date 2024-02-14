@@ -4,6 +4,7 @@ import { createContext, useEffect, useState } from "react";
 export let cartContext = createContext();
 
 let headers = { token: localStorage.getItem("userToken") };
+
 async function addToCart(productId) {
   let response = await axios.post(
     `https://ecommerce.routemisr.com/api/v1/cart`,
@@ -91,14 +92,7 @@ async function onlinePayment(cartId, params, values) {
   return response;
 }
 //
-async function getUserOrders() {
-  let response = await axios
-    .get(
-      "https://ecommerce.routemisr.com/api/v1/orders/user/656525c0a15dbd4a0b658547"
-    )
-    .catch((err) => err);
-  return response.data;
-}
+
 export default function CartContextProvider(props) {
   const [cartDetails, setCartDetails] = useState([]);
   const [cartId, setCartId] = useState("");
@@ -117,12 +111,16 @@ export default function CartContextProvider(props) {
   //get cart
   async function getCart() {
     let { data } = await getLoggedUserCart();
-    // console.log(data);
+    console.log(data);
     setCartDetails(data);
   }
+  const userToken = localStorage.getItem("userToken");
   useEffect(() => {
-    getCartId();
-  }, []);
+    if (userToken !== null) {
+      getCartId();
+      getCart();
+    }
+  }, [userToken]);
   return (
     <cartContext.Provider
       value={{
@@ -135,7 +133,6 @@ export default function CartContextProvider(props) {
         removeAllCarts,
         onlinePayment,
         cartId,
-        getUserOrders,
         isOpen,
         openCart,
         closeCart,

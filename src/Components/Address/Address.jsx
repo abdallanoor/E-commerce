@@ -42,7 +42,7 @@ export default function Address() {
   return (
     <>
       <section>
-        <div className="lg:grid h-section lg:grid-cols-12">
+        <div className="lg:grid h-section lg:grid-cols-12 animate-fadeIn">
           <section className="relative flex h-32 items-end bg-neutral-900 lg:col-span-5 lg:h-full xl:col-span-5">
             <img
               alt="register"
@@ -155,9 +155,9 @@ export default function Address() {
                   <button
                     onClick={formik.handleSubmit}
                     disabled={!(formik.isValid && formik.dirty)}
-                    className="flex items-center justify-center gap-2 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition  focus:outline-none focus:ring active:text-blue-500 hover:bg-blue-700 hover:text-white"
+                    className="flex items-center justify-center gap-2 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition  hover:bg-blue-700 hover:text-white"
                   >
-                    Pay Now <BanknotesIcon className="w-6 " />
+                    Pay Now <BanknotesIcon className="w-5 " />
                     {Loading ? <LoadingDots className="bg-white" /> : ""}
                   </button>
                 </div>

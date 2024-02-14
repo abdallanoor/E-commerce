@@ -51,7 +51,7 @@ export default function ProductDetails() {
 
   return (
     <>
-      <div className="flex items-center justify-center max-w-7xl m-auto  wrapper">
+      <div className="flex items-center justify-center max-w-7xl m-auto  wrapper animate-fadeIn">
         {isLoading ? (
           <div className="">
             <Triangle
@@ -61,13 +61,13 @@ export default function ProductDetails() {
               color="#2563eb"
               ariaLabel="triangle-loading"
               wrapperStyle={{ fontSize: "150px" }}
-              wrapperClass="w-full col-span-3 flex justify-center m-auto"
+              wrapperclassName="w-full col-span-3 flex justify-center m-auto"
             />
           </div>
         ) : (
           <div>
             {data?.data.data ? (
-              <div className="relative flex lg:flex-row flex-col bg-white  dark:bg-black border border-neutral-200  rounded-xl p-4 max-md:p-4 lg:p-10 dark:border-neutral-800">
+              <div className="relative flex lg:flex-row flex-col bg-white  dark:bg-black border border-neutral-200  rounded-xl p-4 max-md:p-4 lg:p-10 dark:border-neutral-800 animate-fadeIn">
                 <ImageSlider
                   imageList={data?.data.data.images}
                   setImgIndex={setImgIndex}
@@ -90,7 +90,7 @@ export default function ProductDetails() {
                         Price
                       </p>
                       <p className="font-bold text-grayshade-300 dark:text-white text-2xl">
-                        $ {data?.data.data.price} EGP
+                        {data?.data.data.price} EGP
                       </p>
                     </div>
                     <div className="flex text-white justify-between items-center">
@@ -115,40 +115,6 @@ export default function ProductDetails() {
           </div>
         )}
       </div>
-
-      {/* {data?.data.data ? (
-        <div className="row py-2 align-items-center">
-          <div className="col-md-4">
-            <img
-              className="w-100"
-              src={data?.data.data.imageCover}
-              alt={data?.data.data.title}
-            />
-          </div>
-          <div className="col-md-8">
-            <h2 className="h5">{data?.data.data.title}</h2>
-            <p>{data?.data.data.description}</p>
-            <h6 className="text-main">{data?.data.data.category.name}</h6>
-            <h6 className="text-main">{data?.data.data.price} EGP</h6>
-            <div className="d-flex justify-content-between">
-              <span>Ratings Quantity : {data?.data.data.ratingsQuantity}</span>
-              <span>
-                <i className="fas fa-star rating-color">
-                  {data?.data.data.ratingsAverage}
-                </i>
-              </span>
-            </div>
-            <button
-              onClick={() => addProduct(data?.data.data.id)}
-              className="btn bg-main text-white w-100 mt-2"
-            >
-              Add To Cart
-            </button>
-          </div>
-        </div>
-      ) : (
-        ""
-      )} */}
     </>
   );
 }

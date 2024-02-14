@@ -145,7 +145,7 @@ export default function Navbar() {
               <li>
                 <Link
                   className="text-neutral-500 hover:text-black  dark:text-neutral-400 dark:hover:text-neutral-300"
-                  to="/search"
+                  to="/"
                 >
                   All
                 </Link>
@@ -153,7 +153,7 @@ export default function Navbar() {
               <li>
                 <Link
                   className="text-neutral-500 hover:text-black  dark:text-neutral-400 dark:hover:text-neutral-300"
-                  to="/search/shirts"
+                  to="/allorders"
                 >
                   Orders
                 </Link>

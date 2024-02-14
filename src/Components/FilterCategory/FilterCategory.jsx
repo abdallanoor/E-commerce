@@ -17,7 +17,7 @@ export default function FilterCategory({
   };
   return (
     <>
-      <div className="lg:!visible lg:!opacity-1 lg:!h-max md:visible md:h-auto visible md:opacity-1 opacity-1 mb-10 lg:ml-7 h-max  w-full  lg:w-2/12 min-w-48 text-xl font-medium border border-gray-200  bg-white dark:border-neutral-800 dark:bg-grayshade-500 rounded-xl  pb-0 py-5 transition-all ">
+      <div className="lg:!visible lg:!opacity-1 lg:!h-max md:visible md:h-auto visible md:opacity-1 opacity-1 mb-10 lg:ml-7 h-max  w-full  lg:w-2/12 min-w-48 text-xl font-medium border border-gray-200  bg-white dark:border-neutral-800 dark:bg-grayshade-500 rounded-xl  pb-0 py-5 transition-all animate-fadeIn">
         <p className="ml-2 flex items-center">
           <svg
             stroke="currentColor"
@@ -46,7 +46,7 @@ export default function FilterCategory({
             <li
               onClick={() => categoryHandler(cat._id)}
               key={cat._id}
-              className={`py-1 cursor-pointer px-2 bg-gradient-to-r from-zinc-50 dark:from-grayshade-400 dark:to-transparent my-3 ${
+              className={`py-1 cursor-pointer px-2 bg-gradient-to-r from-zinc-50 dark:from-grayshade-400 dark:to-transparent my-3 animate-fadeIn ${
                 selectedCat == cat._id && "border-l-2 border-blue-600"
               }`}
             >
