@@ -9,7 +9,7 @@ import noData from "../../Assets/images/No data.svg";
 //
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { ToastContainer } from "react-toastify";
-import { toastSuccess } from "../../ToastAlerts";
+import { toastWarning } from "../../ToastAlerts";
 import LoadingDots from "./../LoadingDots/LoadingDots";
 import FilterCategory from "./../FilterCategory/FilterCategory";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
@@ -63,14 +63,18 @@ export default function FeaturedProducts() {
   // }
   //Add To Cart
   let { addToCart, openCart, getCart, getCartId } = useContext(cartContext);
-  let { userToken } = useContext(userContext);
+  let { userToken, userId } = useContext(userContext);
 
   async function addProduct(productId) {
-    setLoading(true);
-    let response = await addToCart(productId);
-    setLoading(false);
-    getCart();
-    openCart();
+    if (userToken) {
+      setLoading(true);
+      let response = await addToCart(productId);
+      setLoading(false);
+      getCart();
+      openCart();
+    } else {
+      toastWarning("Login First");
+    }
   }
   useEffect(() => {
     getFeaturedProducts();
@@ -79,19 +83,18 @@ export default function FeaturedProducts() {
 
   return (
     <>
-      {/* <h1 className="mb-3">Featured Products</h1>
       <ToastContainer
-        position="bottom-left"
-        autoClose={3000}
-        hideProgressBar={false}
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar
         newestOnTop={false}
         closeOnClick
         rtl={false}
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="light"
-      /> */}
+        theme="dark"
+      />
       <section className="wrapper">
         <h1 className="text-3xl font-bold mb-10">Featured Products</h1>
         <div className="w-full flex lg:flex-row flex-col-reverse animate-fadeIn">

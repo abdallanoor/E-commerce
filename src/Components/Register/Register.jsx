@@ -11,6 +11,7 @@ import {
   LockClosedIcon,
   CheckCircleIcon,
 } from "@heroicons/react/24/outline";
+import logoNav from "../../Assets/images/logo.png";
 import logo from "../../Assets/images/LogoSvg.svg";
 import logo2 from "../../Assets/images/LogoSvg2.svg";
 import register from "../../Assets/images/register.jpg";
@@ -75,7 +76,20 @@ export default function Register() {
   return (
     <>
       <section>
-        <div className="lg:grid h-section lg:grid-cols-12">
+        <div className="relative flex items-center justify-between p-4 lg:px-6">
+          <Link
+            className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+            to="/"
+          >
+            <div className="flex flex-none items-center justify-center border border-neutral-200 bg-white  dark:border-neutral-700 dark:bg-black h-[40px] w-[40px] rounded-xl overflow-hidden">
+              <img src={logoNav} alt="pixel store" />
+            </div>
+            <div className="ml-2 flex-none text-sm font-bold uppercase">
+              pixel Store
+            </div>
+          </Link>
+        </div>
+        <div className="lg:grid min-h-[calc(100vh-72px)] lg:grid-cols-12">
           <section className="relative flex h-32 items-end bg-neutral-900 lg:col-span-5 lg:h-full xl:col-span-5">
             <img
               alt="register"

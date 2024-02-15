@@ -1,5 +1,6 @@
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useContext } from "react";
+import { userContext } from "./UserContext";
 
 export let cartContext = createContext();
 
@@ -15,14 +16,6 @@ async function addToCart(productId) {
       headers,
     }
   );
-  return response;
-}
-async function getLoggedUserCart() {
-  let response = await axios
-    .get(`https://ecommerce.routemisr.com/api/v1/cart`, {
-      headers,
-    })
-    .catch((err) => err);
   return response;
 }
 async function removeCart(productId) {
@@ -91,6 +84,19 @@ async function onlinePayment(cartId, params, values) {
   );
   return response;
 }
+
+async function cashPayment(cartId, values) {
+  let response = await axios.post(
+    `https://ecommerce.routemisr.com/api/v1/orders/${cartId}`,
+    {
+      values,
+    },
+    {
+      headers,
+    }
+  );
+  return response;
+}
 //
 
 export default function CartContextProvider(props) {
@@ -101,6 +107,29 @@ export default function CartContextProvider(props) {
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
 
+  //get cart
+  async function getCart() {
+    let { data } = await axios
+      .get("https://ecommerce.routemisr.com/api/v1/cart", { headers })
+      .catch((err) => err);
+    setCartDetails(data);
+  }
+  // const getCart = async () => {
+  //   try {
+  //     const { data } = await axios.get(
+  //       "https://ecommerce.routemisr.com/api/v1/cart",
+  //       {
+  //         headers,
+  //       }
+  //     );
+  //     setCartDetails(data);
+  //   } catch (error) {
+  //     if (error) {
+  //       setCartDetails([]);
+  //     }
+  //   }
+  // };
+
   async function getCartId() {
     let { data } = await axios
       .get("https://ecommerce.routemisr.com/api/v1/cart", { headers })
@@ -108,30 +137,25 @@ export default function CartContextProvider(props) {
     setCartId(data?.data._id);
   }
 
-  //get cart
-  async function getCart() {
-    let { data } = await getLoggedUserCart();
-    console.log(data);
-    setCartDetails(data);
-  }
-  const userToken = localStorage.getItem("userToken");
-  useEffect(() => {
-    if (userToken !== null) {
-      getCartId();
-      getCart();
-    }
-  }, [userToken]);
+  let { userToken } = useContext(userContext);
+
+  // useEffect(() => {
+  //   if (userToken) {
+  //     getCart();
+  //     getCartId();
+  //   }
+  // }, [userToken]);
   return (
     <cartContext.Provider
       value={{
         addToCart,
-        getLoggedUserCart,
         removeCart,
         increaseItemQuantity,
         updateCart,
         reduceItemQuantity,
         removeAllCarts,
         onlinePayment,
+        cashPayment,
         cartId,
         isOpen,
         openCart,

@@ -21,7 +21,6 @@ export default function DarkMode() {
   }
   onWindowMatch();
 
-  const lang = localStorage.getItem("theme");
   useEffect(() => {
     switch (theme) {
       case "dark":

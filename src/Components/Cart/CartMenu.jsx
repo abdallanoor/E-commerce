@@ -20,16 +20,9 @@ export default function CartMenu() {
   // const [cartDetails, setCartDetails] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  let { isOpen, openCart, closeCart, cartDetails, getCart } =
-    useContext(cartContext);
+  let { isOpen, openCart, closeCart, cartDetails } = useContext(cartContext);
 
   let { userToken } = useContext(userContext);
-
-  // useEffect(() => {
-  //   if (userToken) {
-  //     getCart();
-  //   }
-  // }, []);
 
   return (
     <>
@@ -83,7 +76,9 @@ export default function CartMenu() {
                 </button>
               </div>
 
-              {!cartDetails || cartDetails?.data?.products.length === 0 ? (
+              {!cartDetails ||
+              cartDetails?.data?.products.length === 0 ||
+              userToken == null ? (
                 <div className="mt-20 flex w-full flex-col items-center justify-center overflow-hidden">
                   <ShoppingCartIcon className="h-16" />
                   <p className="mt-6 text-center text-2xl font-bold">

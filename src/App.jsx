@@ -25,15 +25,9 @@ let Routers = createBrowserRouter([
     children: [
       {
         index: true,
-        element: (
-          <ProtectedRoute>
-            {" "}
-            <Home />{" "}
-          </ProtectedRoute>
-        ),
+        element: <Home />,
       },
-      { path: "login", element: <Login /> },
-      { path: "register", element: <Register /> },
+
       {
         path: "Profile",
         element: (
@@ -54,12 +48,7 @@ let Routers = createBrowserRouter([
       },
       {
         path: "productdetails/:id",
-        element: (
-          <ProtectedRoute>
-            {" "}
-            <ProductDetails />{" "}
-          </ProtectedRoute>
-        ),
+        element: <ProductDetails />,
       },
       {
         path: "categories",
@@ -90,15 +79,12 @@ let Routers = createBrowserRouter([
       },
       {
         path: "allorders",
-        element: (
-          <ProtectedRoute>
-            {" "}
-            <Orders />{" "}
-          </ProtectedRoute>
-        ),
+        element: <Orders />,
       },
     ],
   },
+  { path: "login", element: <Login /> },
+  { path: "register", element: <Register /> },
   { path: "*", element: <Notfound /> },
 ]);
 

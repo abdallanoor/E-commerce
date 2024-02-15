@@ -15,6 +15,9 @@ import LoadingDots from "./../LoadingDots/LoadingDots";
 import hat from "../../Assets/images/hat-1.avif";
 import hat2 from "../../Assets/images/clothes category3.jpg";
 import ImageSlider from "./ImageSlider";
+import { ToastContainer } from "react-toastify";
+import { userContext } from "./../../Context/UserContext";
+import { toastWarning } from "./../../ToastAlerts";
 
 export default function ProductDetails() {
   const [loading, setLoading] = useState(false);
@@ -26,11 +29,11 @@ export default function ProductDetails() {
   function getProductDetails(id) {
     return axios.get(`https://ecommerce.routemisr.com/api/v1/products/${id}`);
   }
-  let { data, isLoading, isError, refetch } = useQuery(
+  let { data, isLoading, refetch } = useQuery(
     "ProductDetails",
     () => getProductDetails(param.id),
     {
-      // cacheTime: 3000,
+      cacheTime: 1000,
       // refetchOnMount: false,
       // staleTime: 30000,
       // refetchInterval: 1000
@@ -38,12 +41,19 @@ export default function ProductDetails() {
   );
 
   //Add To Cart
-  let { addToCart, openCart } = useContext(cartContext);
+  let { addToCart, openCart, getCart } = useContext(cartContext);
+  let { userToken } = useContext(userContext);
+
   async function addProduct(productId) {
-    setLoading(true);
-    let response = await addToCart(productId);
-    setLoading(false);
-    openCart();
+    if (userToken) {
+      setLoading(true);
+      let response = await addToCart(productId);
+      setLoading(false);
+      openCart();
+      getCart();
+    } else {
+      toastWarning("Login First");
+    }
   }
   useEffect(() => {
     refetch();
@@ -51,18 +61,27 @@ export default function ProductDetails() {
 
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <div className="flex items-center justify-center max-w-7xl m-auto  wrapper animate-fadeIn">
         {isLoading ? (
-          <div className="">
-            <Triangle
-              visible
-              height="200"
-              width="200"
-              color="#2563eb"
-              ariaLabel="triangle-loading"
-              wrapperStyle={{ fontSize: "150px" }}
-              wrapperclassName="w-full col-span-3 flex justify-center m-auto"
-            />
+          <div className="bg-white  w-full dark:bg-black border border-neutral-200  rounded-xl p-4 max-md:p-4 lg:p-10 dark:border-neutral-800 ">
+            <div className=" animate-pulse ">
+              <div className="w-2/3 h-4 bg-gray-200 rounded dark:bg-grayshade-100 mb-2"></div>
+              <div className="w-full h-8 bg-gray-200 rounded dark:bg-grayshade-100 mb-2"></div>
+              <div className="w-full h-8 bg-gray-200 rounded dark:bg-grayshade-100 mb-2"></div>
+              <div className="w-1/2 h-8 bg-gray-200 rounded dark:bg-grayshade-100"></div>
+            </div>
           </div>
         ) : (
           <div>

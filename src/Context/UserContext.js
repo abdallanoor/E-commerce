@@ -10,10 +10,7 @@ export default function UserContextProvider(props) {
 
   async function getUserOrders(userId) {
     let response = await axios
-      .get(
-        `https://ecommerce.routemisr.com/api/v1/orders/user/${userId}`
-        // "https://ecommerce.routemisr.com/api/v1/orders/user/65caa53e7b9cb7ea0ffe91e3"
-      )
+      .get(`https://ecommerce.routemisr.com/api/v1/orders/user/${userId}`)
       .catch((err) => err);
     return response?.data?.reverse();
   }

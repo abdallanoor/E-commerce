@@ -3,12 +3,15 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import noData from "../../Assets/images/No data.svg";
 import { userContext } from "./../../Context/UserContext";
+import { cartContext } from "./../../Context/CartContext";
 
 export default function Orders() {
   const [userOrder, setUserOrder] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  let { getUserOrders, userId } = useContext(userContext);
+  let { getUserOrders, userId, userToken } = useContext(userContext);
+  let { getCart } = useContext(cartContext);
+
   async function getOrders(userId) {
     setLoading(true);
     let orders = await getUserOrders(userId);
@@ -19,8 +22,11 @@ export default function Orders() {
     setLoading(false);
   }
   useEffect(() => {
-    getOrders(userId);
-  }, []);
+    if (userToken) {
+      getOrders(userId);
+      getCart();
+    }
+  }, [userId]);
 
   return (
     <>

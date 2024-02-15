@@ -21,11 +21,11 @@ const queryClient = new QueryClient();
 root.render(
   <Provider store={store}>
     <QueryClientProvider client={queryClient}>
-      <CartContextProvider>
-        <UserContextProvider>
+      <UserContextProvider>
+        <CartContextProvider>
           <App />
-        </UserContextProvider>
-      </CartContextProvider>
+        </CartContextProvider>
+      </UserContextProvider>
       <ReactQueryDevtools initialIsOpen="false" position="bottom-right" />
     </QueryClientProvider>
   </Provider>

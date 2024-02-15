@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 // import Style from './Address.module.css'
 import { useFormik } from "formik";
 import { cartContext } from "../../Context/CartContext";
@@ -20,25 +20,57 @@ import LoadingDots from "./../LoadingDots/LoadingDots";
 
 export default function Address() {
   //Loading
+  const [payLoading, setPayLoading] = useState(false);
   const [Loading, setLoading] = useState(false);
 
-  let { onlinePayment, cartId } = useContext(cartContext);
-  async function onSubmit(values) {
-    setLoading(true);
-    let { data } = await onlinePayment(cartId, "http://localhost:3000", {
-      shippingAddress: values,
-    });
-    window.location.href = data?.session.url;
-    setLoading(false);
-  }
+  let { cashPayment, onlinePayment, cartId, getCart, getCartId } =
+    useContext(cartContext);
+
   let formik = useFormik({
     initialValues: {
       details: "",
       phone: "",
       city: "",
     },
-    onSubmit,
+    onSubmit: async (values, { setSubmitting }) => {
+      try {
+        if (values.submitAction === "onlinePayment") {
+          // Handle online payment button click
+          setPayLoading(true);
+          let { data } = await onlinePayment(
+            cartId,
+            "https://pixel-store-beta.vercel.app",
+            {
+              shippingAddress: values,
+            }
+          );
+          setPayLoading(false);
+          window.location.href = data?.session.url;
+        } else if (values.submitAction === "delivery") {
+          // Handle delivery button click
+          setLoading(true);
+          let { data } = await cashPayment(cartId, {
+            shippingAddress: values,
+          });
+          setLoading(false);
+          window.location.href =
+            "https://pixel-store-beta.vercel.app/allorders";
+        }
+
+        // Reset form after submission
+        formik.resetForm();
+      } catch (error) {
+        console.error("Error submitting form:", error);
+      } finally {
+        setSubmitting(false);
+      }
+    },
   });
+  useEffect(() => {
+    getCart();
+    getCartId();
+  }, []);
+
   return (
     <>
       <section>
@@ -151,13 +183,34 @@ export default function Address() {
                   </div>
                 </div>
 
-                <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
+                <div className="col-span-6 flex justify-between items-center gap-4 flex-col  sm:flex-row">
                   <button
-                    onClick={formik.handleSubmit}
+                    type="submit"
+                    onClick={() => {
+                      formik.setValues({
+                        ...formik.values,
+                        submitAction: "onlinePayment",
+                      });
+                    }}
                     disabled={!(formik.isValid && formik.dirty)}
-                    className="flex items-center justify-center gap-2 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition  hover:bg-blue-700 hover:text-white"
+                    className="flex items-center w-full justify-center gap-2 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition  hover:bg-blue-700 hover:text-white"
                   >
                     Pay Now <BanknotesIcon className="w-5 " />
+                    {payLoading ? <LoadingDots className="bg-white" /> : ""}
+                  </button>
+
+                  <button
+                    type="submit"
+                    onClick={() => {
+                      formik.setValues({
+                        ...formik.values,
+                        submitAction: "delivery",
+                      });
+                    }}
+                    disabled={!(formik.isValid && formik.dirty)}
+                    className="flex items-center w-full justify-center gap-2 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition  hover:bg-blue-700 hover:text-white"
+                  >
+                    Delivary <BanknotesIcon className="w-5 " />
                     {Loading ? <LoadingDots className="bg-white" /> : ""}
                   </button>
                 </div>
