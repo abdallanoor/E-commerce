@@ -22,6 +22,7 @@ import { toastWarning } from "./../../ToastAlerts";
 export default function ProductDetails() {
   const [loading, setLoading] = useState(false);
   const [productDetails, setProductDetails] = useState([]);
+
   const [imgIndex, setImgIndex] = useState(0);
 
   let param = useParams();

@@ -31,7 +31,7 @@ export default function Orders() {
   return (
     <>
       <section className="flex items-center wrapper animate-fadeIn">
-        <div className="justify-center flex-1 max-w-7xl px-6 py-6 mx-auto bg-gray-100 rounded-md border dark:border-neutral-800 dark:bg-grayshade-500 lg:py-10 lg:px-10 ">
+        <div className="justify-center flex-1 max-w-7xl px-6 py-6 mx-auto bg-white rounded-md border dark:border-neutral-800 dark:bg-black lg:py-10 lg:px-10 ">
           {loading ? (
             <div className=" rounded-lg p-4 animate-pulse">
               <div className="w-2/3 h-4 bg-gray-200 rounded dark:bg-grayshade-100 mb-2"></div>

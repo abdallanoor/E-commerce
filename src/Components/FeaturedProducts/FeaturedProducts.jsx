@@ -142,7 +142,7 @@ export default function FeaturedProducts() {
               editData.map((product) => (
                 <div
                   key={product.id}
-                  className="md:p-4 lg:p-7 p-3 rounded-lg border border-gray-100  bg-white dark:border-neutral-800 dark:bg-grayshade-500 shadow-md w-full justify-center justify-items-center justify-self-center animate-fadeIn"
+                  className="md:p-4 lg:p-7 p-3 rounded-lg border border-gray-100  bg-white dark:border-neutral-800 dark:bg-black shadow-md w-full justify-center justify-items-center justify-self-center animate-fadeIn"
                 >
                   <Link to={`/ProductDetails/${product.id}`}>
                     <img
@@ -193,7 +193,7 @@ export default function FeaturedProducts() {
               ))
             )}
             {editData.length == 0 && (
-              <div className="font-semibold flex flex-col items-center justify-center text-xl mb-20 w-full animate-fadeIn">
+              <div className=" flex flex-col items-center justify-center text-xl mb-20 w-full animate-fadeIn">
                 <img src={noData} alt="No Data" className="w-72" />
                 <p>Sorry Products Is Not Available..</p>
               </div>

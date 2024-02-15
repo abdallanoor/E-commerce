@@ -1,7 +1,4 @@
 function ImageSlider({ imageList, setImgIndex, imgIndex, alt }) {
-  // if (imageList.length > 4) {
-  //   imageList.splice(0, 4);
-  // }
   return (
     <div className="flex lg:flex-row lg:min-w-96 h-full w-full basis-full lg:basis-5/12 flex-col-reverse justify-around items-center">
       <div className="flex flex-row lg:flex-col flex-wrap justify-around">

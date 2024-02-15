@@ -139,12 +139,12 @@ export default function CartContextProvider(props) {
 
   let { userToken } = useContext(userContext);
 
-  // useEffect(() => {
-  //   if (userToken) {
-  //     getCart();
-  //     getCartId();
-  //   }
-  // }, [userToken]);
+  useEffect(() => {
+    if (localStorage.getItem("userToken")) {
+      getCart();
+      getCartId();
+    }
+  }, []);
   return (
     <cartContext.Provider
       value={{
