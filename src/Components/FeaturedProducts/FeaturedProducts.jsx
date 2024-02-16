@@ -17,12 +17,18 @@ import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import { userContext } from "./../../Context/UserContext";
 
+import { useParams } from "react-router-dom";
+
 export default function FeaturedProducts() {
   const [productloading, setProductLoading] = useState(false);
   const [loading, setLoading] = useState(false);
   const [editData, setEditData] = useState([]);
   const [categoryData, setCategoryData] = useState([]);
   const [selectedCat, setSelectedCat] = useState(0);
+
+  let param = useParams();
+
+  console.log(param);
 
   function getFeaturedProducts() {
     setProductLoading(true);
@@ -34,7 +40,6 @@ export default function FeaturedProducts() {
         setProductLoading(false);
       });
   }
-  // console.log(data);
   function getCategories() {
     axios
       .get(`https://ecommerce.routemisr.com/api/v1/categories`)
@@ -43,24 +48,17 @@ export default function FeaturedProducts() {
         setSelectedCat(response?.data?.data._id);
       });
   }
-  // function getCategories() {
-  //   return axios.get(`https://ecommerce.routemisr.com/api/v1/categories`);
-  // }
-  // const categories = useQuery("filterCategory", getCategories, {});
 
   function getAllCategories(id) {
     setProductLoading(true);
     axios
       .get(`https://ecommerce.routemisr.com/api/v1/products/?category=${id}`)
       .then((response) => {
-        setEditData(response?.data?.data);
+        setEditData(response?.data?.data.reverse());
         console.log(response?.data?.data);
         setProductLoading(false);
       });
   }
-  // if (data?.data.data.length > 4) {
-  //   setEditData(data?.data.data.reverse().splice(0, 3));
-  // }
   //Add To Cart
   let { addToCart, openCart, getCart, getCartId } = useContext(cartContext);
   let { userToken, userId } = useContext(userContext);
@@ -69,8 +67,8 @@ export default function FeaturedProducts() {
     if (userToken) {
       setLoading(true);
       let response = await addToCart(productId);
-      setLoading(false);
       getCart();
+      setLoading(false);
       openCart();
     } else {
       toastWarning("Login First");
@@ -178,7 +176,8 @@ export default function FeaturedProducts() {
                     <div className="flex text-white justify-between items-center">
                       <button
                         onClick={() => addProduct(product.id)}
-                        className="py-2 px-4 button flex gap-2 items-center"
+                        disabled={loading}
+                        className="py-2 px-4 button flex gap-2 text-sm items-center"
                       >
                         Add To Cart
                         {loading ? (
