@@ -46,7 +46,7 @@ export default function ProductItem({ product }) {
               className="font-semibold text-grayshade-100 dark:text-white text-xs ml-1"
               to={`/ProductDetails/${product.id}`}
             >
-              Learn more
+              Read More
             </Link>
           </p>
           <span className="lable">{product.category.name}</span>
