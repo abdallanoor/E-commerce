@@ -28,8 +28,6 @@ export default function FeaturedProducts() {
 
   let param = useParams();
 
-  console.log(param);
-
   function getFeaturedProducts() {
     setProductLoading(true);
     axios
@@ -94,9 +92,9 @@ export default function FeaturedProducts() {
         theme="dark"
       />
       <section className="wrapper">
-        <h1 className="text-3xl font-bold mb-10">Featured Products</h1>
+        <h1 className="text-3xl font-bold mb-10">All Products</h1>
         <div className="w-full flex lg:flex-row flex-col-reverse animate-fadeIn">
-          <div className="lg:w-10/12 md:w-10/12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 md:grid-cols-2 lg:gap-7 gap-4 m-auto animate-fadeIn">
+          <div className="lg:w-10/12 md:w-10/12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 md:grid-cols-2 lg:gap-7 gap-4 m-auto max-sm:px-10 animate-fadeIn">
             {productloading ? (
               <>
                 <div className="w-full animate-pulse">
