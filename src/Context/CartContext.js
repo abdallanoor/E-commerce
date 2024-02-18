@@ -84,7 +84,6 @@ async function onlinePayment(cartId, params, values) {
   );
   return response;
 }
-
 async function cashPayment(cartId, values) {
   let response = await axios.post(
     `https://ecommerce.routemisr.com/api/v1/orders/${cartId}`,
@@ -107,13 +106,6 @@ export default function CartContextProvider(props) {
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
 
-  //get cart
-  async function getCart() {
-    let { data } = await axios
-      .get("https://ecommerce.routemisr.com/api/v1/cart", { headers })
-      .catch((err) => err);
-    setCartDetails(data);
-  }
   // const getCart = async () => {
   //   try {
   //     const { data } = await axios.get(
@@ -136,7 +128,13 @@ export default function CartContextProvider(props) {
       .catch((err) => err);
     setCartId(data?.data._id);
   }
-
+  //get cart
+  async function getCart() {
+    let response = await axios
+      .get("https://ecommerce.routemisr.com/api/v1/cart", { headers })
+      .catch((err) => err);
+    setCartDetails(response?.data);
+  }
   let { userToken } = useContext(userContext);
 
   useEffect(() => {

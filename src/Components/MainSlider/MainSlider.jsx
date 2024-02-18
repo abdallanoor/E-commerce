@@ -1,23 +1,11 @@
 import React from "react";
-// import Style from './MainSlider.module.css'
-import Slider from "react-slick";
-import slide1 from "../../Assets/images/t-shirt-1.avif";
-import slide2 from "../../Assets/images/hat-1.avif";
-import slide3 from "../../Assets/images/bag-1-dark.avif";
-import slide4 from "../../Assets/images/banner-4.jpeg";
+
 import clothes from "../../Assets/images/clothes category.jpg";
 import clothes2 from "../../Assets/images/clothes category2.jpg";
 import clothes3 from "../../Assets/images/clothes category3.jpg";
 
 export default function MainSlider() {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-  };
+
 
   return (
     <>
@@ -118,19 +106,7 @@ export default function MainSlider() {
           </a>
         </div>
       </section>
-      {/* <div className="row gx-0">
-      <div className="col-md-9 mb-4">
-        <Slider  {...settings}>
-          <img height={450} className='fit-main w-100' src={slide1} alt="slider" />
-          <img height={450} className='fit-main w-100' src={slide3} alt="slider" />
-          <img height={450} className='fit-main w-100' src={slide2} alt="slider" />
-        </Slider>
-      </div>
-      <div className="col-md-3 mb-4">
-        <img height={225} className='w-100 fit-main' src={slide3} alt="slider" />
-        <img height={225} className='w-100 fit-main' src={slide2} alt="slider" />
-      </div>
-    </div> */}
+
     </>
   );
 }

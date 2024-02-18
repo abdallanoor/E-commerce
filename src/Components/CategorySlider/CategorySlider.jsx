@@ -1,8 +1,6 @@
 import axios from "axios";
 import React from "react";
 import { useQuery } from "react-query";
-import Slider from "react-slick";
-// import Style from './CategorySlider.module.css'
 import { Link } from "react-router-dom";
 
 import hat from "../../Assets/images/hoodie-1.avif";
@@ -13,40 +11,7 @@ export default function CategorySlider() {
   }
   let { data, isLoading, isError } = useQuery("CategorySlider", getCategories);
 
-  var settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
+
 
   return (
     <>

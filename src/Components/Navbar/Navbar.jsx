@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 // import Style from './Navbar.module.css'
 import { userContext } from "./../../Context/UserContext";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+
 import CartMenu from "./../Cart/CartMenu";
 import Search from "./Search";
 import MobileMenu from "./MobileMenu";

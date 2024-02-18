@@ -3,12 +3,10 @@ import { Link } from "react-router-dom";
 
 import axios from "axios";
 import { useQuery } from "react-query";
-import { ThreeDots } from "react-loader-spinner";
 import { useParams } from "react-router-dom";
 import { cartContext } from "../../Context/CartContext";
 // import Style from './ProductDetails.module.css'
 import { useEffect } from "react";
-import { Triangle } from "react-loader-spinner";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import LoadingDots from "./../LoadingDots/LoadingDots";
 
@@ -22,7 +20,7 @@ import { toastWarning } from "./../../ToastAlerts";
 export default function ProductDetails() {
   const [loading, setLoading] = useState(false);
   const [productDetails, setProductDetails] = useState([]);
-
+  const [imageList, setImageList] = useState([]);
   const [imgIndex, setImgIndex] = useState(0);
 
   let param = useParams();

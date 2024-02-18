@@ -3,13 +3,10 @@ import Layout from "./Components/Layout/Layout";
 import Home from "./Components/Home/Home";
 import Notfound from "./Components/Notfound/Notfound";
 import Login from "./Components/Login/Login";
-import Profile from "./Components/Profile/Profile";
 
 import Register from "./Components/Register/Register";
 import Products from "./Components/Products/Products";
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
-import Categories from "./Components/Categories/Categories";
-import Brands from "./Components/Brands/Brands";
 import { userContext } from "./Context/UserContext";
 import { useContext, useEffect } from "react";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
@@ -27,16 +24,6 @@ let Routers = createBrowserRouter([
         index: true,
         element: <Home />,
       },
-
-      {
-        path: "Profile",
-        element: (
-          <ProtectedRoute>
-            {" "}
-            <Profile />{" "}
-          </ProtectedRoute>
-        ),
-      },
       {
         path: "products",
         element: (
@@ -49,24 +36,6 @@ let Routers = createBrowserRouter([
       {
         path: "productdetails/:id",
         element: <ProductDetails />,
-      },
-      {
-        path: "categories",
-        element: (
-          <ProtectedRoute>
-            {" "}
-            <Categories />{" "}
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "brands",
-        element: (
-          <ProtectedRoute>
-            {" "}
-            <Brands />{" "}
-          </ProtectedRoute>
-        ),
       },
       {
         path: "address",
