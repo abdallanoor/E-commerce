@@ -114,7 +114,7 @@ export default function ProductDetails() {
                     <div className="flex text-white justify-between items-center">
                       <button
                         onClick={() => addProduct(data?.data.data.id)}
-                        className="py-2 px-4 button flex gap-2 items-center"
+                        className="py-2 px-4 button flex gap-2 items-center text-center  rounded-lg text-white bg-blue-600"
                       >
                         Add To Cart
                         {loading ? (
