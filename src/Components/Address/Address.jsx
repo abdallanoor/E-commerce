@@ -12,6 +12,7 @@ import {
   CheckCircleIcon,
   BanknotesIcon,
   HomeIcon,
+  TruckIcon,
 } from "@heroicons/react/24/outline";
 import logo from "../../Assets/images/LogoSvg.svg";
 import logo2 from "../../Assets/images/LogoSvg2.svg";
@@ -35,7 +36,7 @@ export default function Address() {
     onSubmit: async (values, { setSubmitting }) => {
       try {
         if (values.submitAction === "onlinePayment") {
-          // Handle online payment button click
+          // Handle Checkout button click
           setPayLoading(true);
           let { data } = await onlinePayment(
             cartId,
@@ -89,7 +90,7 @@ export default function Address() {
               </Link>
 
               <h2 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
-                Online Payment
+                Checkout
               </h2>
             </div>
           </section>
@@ -106,7 +107,7 @@ export default function Address() {
                 </Link>
 
                 <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl dark:text-white">
-                  Online Payment
+                  Checkout
                 </h1>
               </div>
 
@@ -210,7 +211,7 @@ export default function Address() {
                     disabled={!(formik.isValid && formik.dirty)}
                     className="flex items-center w-full justify-center gap-2 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition  hover:bg-blue-700 hover:text-white"
                   >
-                    Delivary <BanknotesIcon className="w-5 " />
+                    Delivary <TruckIcon className="w-5 " />
                     {Loading ? <LoadingDots className="bg-white" /> : ""}
                   </button>
                 </div>
@@ -221,7 +222,7 @@ export default function Address() {
       </section>
 
       {/* <form className="mt-3" onSubmit={formik.handleSubmit}>
-        <h1>Online Payment</h1>
+        <h1>Checkout</h1>
         <div className="form-group mb-2">
           <label htmlFor="details">Details :</label>
           <input
