@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { cartContext } from "./../../Context/CartContext";
 import DeleteItemButton from "./DeleteItemButton";
@@ -6,11 +6,7 @@ import IncreaseItemQuantityButton from "./IncreaseItemQuantityButton";
 import ReduceItemQuantityButton from "./ReduceItemQuantityButton";
 
 export default function CartDetails() {
-  let {
-    closeCart,
-    cartDetails,
-  } = useContext(cartContext);
-
+  let { closeCart, cartDetails } = useContext(cartContext);
 
   return (
     <div className="flex h-full flex-col justify-between overflow-hidden p-1">

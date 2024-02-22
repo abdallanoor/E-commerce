@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useFormik } from "formik";
@@ -15,10 +14,9 @@ import logoNav from "../../Assets/images/logo.png";
 import logo from "../../Assets/images/LogoSvg.svg";
 import logo2 from "../../Assets/images/LogoSvg2.svg";
 import register from "../../Assets/images/register.jpg";
-import register2 from "../../Assets/images/register2.jpg";
 
-import LoadingDots from "./../LoadingDots/LoadingDots";
-// import Style from './Register.module.css'
+import LoadingDots from "./../Loading/LoadingDots";
+import DarkMode from "./../DarkMode/DarkMode";
 
 export default function Register() {
   //Navigate
@@ -30,7 +28,7 @@ export default function Register() {
       .max(20, "Name maxlenght is 20")
       .required("Name is required"),
     phone: Yup.string()
-      .matches(/^01[0125]\d{8}$/, "phone is invalid")
+      .matches(/^(00201|\+201|01)[0-2,5]{1}[0-9]{8}$/, "phone is invalid")
       .required("Phone is required"),
     email: Yup.string().email("Email is invalid").required("Email is required"),
     password: Yup.string()
@@ -88,6 +86,9 @@ export default function Register() {
               pixel Store
             </div>
           </Link>
+          <div className="hidden">
+            <DarkMode />
+          </div>
         </div>
         <div className="lg:grid min-h-[calc(100vh-72px)] lg:grid-cols-12">
           <section className="relative flex h-32 items-end bg-neutral-900 lg:col-span-5 lg:h-full xl:col-span-5">

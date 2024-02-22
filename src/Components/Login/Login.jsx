@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useFormik } from "formik";
 import { useNavigate, Link } from "react-router-dom";
 import * as Yup from "yup";
 import { userContext } from "../../Context/UserContext";
+import { cartContext } from "./../../Context/CartContext";
 import logo from "../../Assets/images/logo.png";
 import {
   AtSymbolIcon,
@@ -12,11 +13,12 @@ import {
   PaperAirplaneIcon,
 } from "@heroicons/react/24/outline";
 
-// import Style from './Login.module.css'
-import LoadingDots from "./../LoadingDots/LoadingDots";
+import LoadingDots from "./../Loading/LoadingDots";
+import DarkMode from "./../DarkMode/DarkMode";
 
 export default function Login() {
   let { setUserToken } = useContext(userContext);
+  let { assignHeader } = useContext(cartContext);
   //Navigate
   let Navigate = useNavigate();
   //Yup Validation
@@ -46,8 +48,8 @@ export default function Login() {
       localStorage.setItem("userToken", data.token);
       //set Token in var.. userToken
       setUserToken(data.token);
+      assignHeader();
       Navigate("/");
-      window.location.reload(false);
     }
   }
 
@@ -76,16 +78,20 @@ export default function Login() {
               pixel Store
             </div>
           </Link>
+          <div className="hidden">
+            <DarkMode />
+          </div>
         </div>
+
         <div className="mx-auto max-w-lg">
           <div className="mx-auto max-w-screen-xl min-h-[calc(100vh-72px)] px-4 py-10 sm:px-6 lg:px-8">
             <h1 className="text-center text-2xl font-bold  sm:text-3xl">
               Hala! Let's get started
             </h1>
             {/* <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
-            Explore fashion trends, enhance your shopping online. Login for
-            exclusive deals & seamless purchasing.
-          </p> */}
+              Explore fashion trends, enhance your shopping online. Login for
+              exclusive deals & seamless purchasing.
+            </p> */}
             <div className="mx-auto mt-4 max-w-md text-center text-gray-500">
               <div>For Test</div>
               <div>Email: abdallah@yahoo.com</div>

@@ -1,6 +1,6 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { cartContext } from "./../../Context/CartContext";
-import LoadingDots from "./../LoadingDots/LoadingDots";
+import LoadingDots from "./../Loading/LoadingDots";
 import { MinusIcon } from "@heroicons/react/24/outline";
 
 export default function ReduceItemQuantityButton({ productId, productCount }) {

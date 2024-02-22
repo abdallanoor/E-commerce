@@ -5,35 +5,12 @@ import { Link } from "react-router-dom";
 export default function Notfound() {
   return (
     <>
-      {/* <main className="flex items-center justify-center min-h-[calc(100vh-100px)] h-screen p-8 md:p-16">
-        <section className="mx-auto  w-full flex items-center justify-center flex-col">
-          <div className="flex items-center justify-center absolute inset-0  flex-col lg:flex-row">
-            <div className="flex items-center justify-center h-full w-full">
-              <div className="texture-animated h-full w-full lg:h-[85%] lg:w-[85%] 3xl:h-full 3xl:w-full"></div>
-            </div>
-            <div className="flex items-center justify-center h-full w-full">
-              <div className="texture-animated h-full w-full lg:h-[85%] lg:w-[85%] 3xl:h-full 3xl:w-full"></div>
-            </div>
-          </div>
-          <h1 className=" text-[130px] font-bold leading-[152px]">404</h1>
-          <h2 className="heading2 text-center text-white">
-            Oops! The page does not exist
-          </h2>
-          <div className="my-10 w-full md:w-[70%]"><p className="base-regular text-center text-white-800">Sorry! We couldn’t find the page.</p></div>
-          <a
-            className="flex items-center justify-center min-h-[48px] cursor-pointer rounded-full  bg-purple px-6 py-3  text-[14px] font-semibold leading-[16px] text-white"
-            href="/"
-          >
-            Go back to Homepage →
-          </a>
-        </section>
-      </main> */}
       <main className="flex items-center justify-center p-2 md:p-16 h-screen relative z-0 bg-black">
         <section className="flex items-center  justify-center mx-auto flex-col">
-          <h1 className="text-white text-[130px] font-extrabold leading-[152px]">
+          <h1 className="bg-gradient-to-r from-blue-600 via-blue-400 to-blue-900 text-transparent bg-clip-text text-[100px] font-extrabold leading-[152px]">
             404
           </h1>
-          <h2 className="text-5xl font-bold text-center text-white leading-[70px]">
+          <h2 className="text-2xl lg:text-4xl font-bold text-center text-white leading-[70px]">
             Oops! The page does not exist
           </h2>
           <div className="my-10 w-full ">

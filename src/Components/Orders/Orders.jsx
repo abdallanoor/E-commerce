@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
-// import Style from './Orders.module.css'
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import noData from "../../Assets/images/No data.svg";
 import { userContext } from "./../../Context/UserContext";
 import { cartContext } from "./../../Context/CartContext";
+import ContentLoading from "./../Loading/ContentLoading";
 
 export default function Orders() {
   const [userOrder, setUserOrder] = useState([]);
@@ -15,7 +15,6 @@ export default function Orders() {
   async function getOrders(userId) {
     setLoading(true);
     let orders = await getUserOrders(userId);
-    console.log(orders);
     if (orders?.length > 0) {
       setUserOrder(orders[0]);
     }
@@ -33,13 +32,7 @@ export default function Orders() {
       <section className="flex items-center wrapper animate-fadeIn">
         <div className="justify-center flex-1 max-w-7xl px-6 py-6 mx-auto bg-white rounded-md border dark:border-neutral-800 dark:bg-black lg:py-10 lg:px-10 ">
           {loading ? (
-            <div className=" rounded-lg p-4 animate-pulse">
-              <div className="w-2/3 h-4 bg-gray-200 rounded dark:bg-grayshade-100 mb-2"></div>
-
-              <div className="w-full h-8 bg-gray-200 rounded dark:bg-grayshade-100 mb-2"></div>
-              <div className="w-full h-8 bg-gray-200 rounded dark:bg-grayshade-100 mb-2"></div>
-              <div className="w-1/2 h-8 bg-gray-200 rounded dark:bg-grayshade-100"></div>
-            </div>
+            <ContentLoading />
           ) : userOrder?.__v === 0 ? (
             <div className="animate-fadeIn">
               <div className="mb-16 text-center">
@@ -153,9 +146,9 @@ export default function Orders() {
             </div>
           ) : (
             <div className="flex justify-center animate-fadeIn">
-              <div className="flex items-center flex-col gap-2">
+              <div className="flex items-center text-center flex-col gap-2">
                 <img src={noData} alt="No Data" className="w-64" />
-                <p className="text-xl">No items found</p>
+                <p className="text-xl">No items found!</p>
                 <p className="text-gray-500 dark:text-gray-400">
                   We couldn'd find items that matched your search in the given
                   time period

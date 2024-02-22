@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState, useContext } from "react";
+import { Fragment, useEffect, useState, useContext } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Dialog, Transition } from "@headlessui/react";
 import { userContext } from "./../../Context/UserContext";
@@ -15,7 +15,6 @@ export default function MobileMenu() {
     localStorage.removeItem("userToken");
     setUserToken(null);
     navigate("/login");
-    // window.location.reload(false);
   }
   //
   const [isOpen, setIsOpen] = useState(false);
@@ -36,8 +35,7 @@ export default function MobileMenu() {
     <>
       <button
         onClick={openMobileMenu}
-        aria-label="Open mobile menu"
-        className="flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors dark:border-neutral-700 dark:text-white md:hidden"
+        className="flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors dark:border-neutral-700 dark:text-white md:hidden focus-visible:outline-none"
       >
         <Bars3Icon className="h-4" />
       </button>
@@ -67,9 +65,9 @@ export default function MobileMenu() {
               <div className="p-4">
                 <div className="flex items-center justify-between">
                   <button
-                    className="mb-4 flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors dark:border-neutral-700 dark:text-white"
+                    className="mb-4 flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors dark:border-neutral-700 dark:text-white focus-visible:outline-none"
                     onClick={closeMobileMenu}
-                    aria-label="Close mobile menu"
+                    
                   >
                     <XMarkIcon className="h-6" />
                   </button>
@@ -99,7 +97,7 @@ export default function MobileMenu() {
                   </li>
                   {userToken !== null ? (
                     <>
-                      <li onClick={closeMobileMenu} className="">
+                      <li onClick={closeMobileMenu} className="mt-2">
                         <span
                           onClick={() => logout()}
                           className="text-neutral-500 hover:text-black  dark:text-neutral-400 dark:hover:text-neutral-300 cursor-pointer"

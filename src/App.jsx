@@ -3,9 +3,7 @@ import Layout from "./Components/Layout/Layout";
 import Home from "./Components/Home/Home";
 import Notfound from "./Components/Notfound/Notfound";
 import Login from "./Components/Login/Login";
-
 import Register from "./Components/Register/Register";
-import Products from "./Components/Products/Products";
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
 import { userContext } from "./Context/UserContext";
 import { useContext, useEffect } from "react";
@@ -13,7 +11,6 @@ import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import Address from "./Components/Address/Address";
 import Orders from "./Components/Orders/Orders";
 import "./App.css";
-import { cartContext } from "./Context/CartContext";
 
 let Routers = createBrowserRouter([
   {
@@ -23,15 +20,6 @@ let Routers = createBrowserRouter([
       {
         index: true,
         element: <Home />,
-      },
-      {
-        path: "products",
-        element: (
-          <ProtectedRoute>
-            {" "}
-            <Products />{" "}
-          </ProtectedRoute>
-        ),
       },
       {
         path: "productdetails/:id",
@@ -58,8 +46,7 @@ let Routers = createBrowserRouter([
 ]);
 
 function App() {
-  let { setUserToken, userToken } = useContext(userContext);
-  let { getCartId, getCart } = useContext(cartContext);
+  let { setUserToken } = useContext(userContext);
   //set Old localstorage value after refresh page
   useEffect(() => {
     if (localStorage.getItem("userToken") !== null) {

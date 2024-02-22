@@ -4,101 +4,8 @@ import { userContext } from "./UserContext";
 
 export let cartContext = createContext();
 
-let headers = { token: localStorage.getItem("userToken") };
-
-async function addToCart(productId) {
-  let response = await axios.post(
-    `https://ecommerce.routemisr.com/api/v1/cart`,
-    {
-      productId,
-    },
-    {
-      headers,
-    }
-  );
-  return response;
-}
-async function removeCart(productId) {
-  let response = await axios.delete(
-    `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
-    {
-      headers,
-    }
-  );
-  return response;
-}
-async function increaseItemQuantity(productId, count) {
-  let response = await axios.put(
-    `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
-    {
-      count,
-    },
-    {
-      headers,
-    }
-  );
-  return response;
-}
-async function reduceItemQuantity(productId, count) {
-  let response = await axios.put(
-    `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
-    {
-      count,
-    },
-    {
-      headers,
-    }
-  );
-  return response;
-}
-async function updateCart(productId, count) {
-  let response = await axios.put(
-    `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
-    {
-      count,
-    },
-    {
-      headers,
-    }
-  );
-  return response;
-}
-async function removeAllCarts() {
-  let response = await axios.delete(
-    `https://ecommerce.routemisr.com/api/v1/cart`,
-    {
-      headers,
-    }
-  );
-  return response;
-}
-async function onlinePayment(cartId, params, values) {
-  let response = await axios.post(
-    `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${params}`,
-    {
-      values,
-    },
-    {
-      headers,
-    }
-  );
-  return response;
-}
-async function cashPayment(cartId, values) {
-  let response = await axios.post(
-    `https://ecommerce.routemisr.com/api/v1/orders/${cartId}`,
-    {
-      values,
-    },
-    {
-      headers,
-    }
-  );
-  return response;
-}
-//
-
 export default function CartContextProvider(props) {
+  const [headers, setHeader] = useState(null);
   const [cartDetails, setCartDetails] = useState([]);
   const [cartId, setCartId] = useState("");
 
@@ -106,43 +13,120 @@ export default function CartContextProvider(props) {
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
 
-  // const getCart = async () => {
-  //   try {
-  //     const { data } = await axios.get(
-  //       "https://ecommerce.routemisr.com/api/v1/cart",
-  //       {
-  //         headers,
-  //       }
-  //     );
-  //     setCartDetails(data);
-  //   } catch (error) {
-  //     if (error) {
-  //       setCartDetails([]);
-  //     }
-  //   }
-  // };
+  let { userToken } = useContext(userContext);
 
-  async function getCartId() {
-    let { data } = await axios
-      .get("https://ecommerce.routemisr.com/api/v1/cart", { headers })
-      .catch((err) => err);
-    setCartId(data?.data._id);
+  function assignHeader() {
+    setHeader({ token: localStorage.getItem("userToken") });
+  }
+
+  async function addToCart(productId) {
+    let response = await axios.post(
+      `https://ecommerce.routemisr.com/api/v1/cart`,
+      {
+        productId,
+      },
+      {
+        headers,
+      }
+    );
+    return response;
+  }
+  async function removeCart(productId) {
+    let response = await axios.delete(
+      `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
+      {
+        headers,
+      }
+    );
+    return response;
+  }
+  async function increaseItemQuantity(productId, count) {
+    let response = await axios.put(
+      `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
+      {
+        count,
+      },
+      {
+        headers,
+      }
+    );
+    return response;
+  }
+  async function reduceItemQuantity(productId, count) {
+    let response = await axios.put(
+      `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
+      {
+        count,
+      },
+      {
+        headers,
+      }
+    );
+    return response;
+  }
+  async function updateCart(productId, count) {
+    let response = await axios.put(
+      `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
+      {
+        count,
+      },
+      {
+        headers,
+      }
+    );
+    return response;
+  }
+  async function removeAllCarts() {
+    let response = await axios.delete(
+      `https://ecommerce.routemisr.com/api/v1/cart`,
+      {
+        headers,
+      }
+    );
+    return response;
+  }
+  async function onlinePayment(cartId, params, values) {
+    let response = await axios.post(
+      `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${params}`,
+      {
+        values,
+      },
+      {
+        headers,
+      }
+    );
+    return response;
+  }
+  async function cashPayment(cartId, values) {
+    let response = await axios.post(
+      `https://ecommerce.routemisr.com/api/v1/orders/${cartId}`,
+      {
+        values,
+      },
+      {
+        headers,
+      }
+    );
+    return response;
   }
   //get cart
   async function getCart() {
-    let response = await axios
-      .get("https://ecommerce.routemisr.com/api/v1/cart", { headers })
+    let { data } = await axios
+      .get("https://ecommerce.routemisr.com/api/v1/cart", {
+        headers,
+      })
       .catch((err) => err);
-    setCartDetails(response?.data);
+    setCartDetails(data);
+    setCartId(data?.data._id);
   }
-  let { userToken } = useContext(userContext);
 
   useEffect(() => {
-    if (localStorage.getItem("userToken")) {
+    assignHeader();
+    if (userToken) {
       getCart();
-      getCartId();
     }
-  }, []);
+  }, [userToken]);
+
   return (
     <cartContext.Provider
       value={{
@@ -158,10 +142,10 @@ export default function CartContextProvider(props) {
         isOpen,
         openCart,
         closeCart,
-        getCartId,
         cartDetails,
         setCartDetails,
         getCart,
+        assignHeader,
       }}
     >
       {props.children}

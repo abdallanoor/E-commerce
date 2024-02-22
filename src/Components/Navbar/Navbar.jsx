@@ -1,8 +1,6 @@
-import React, { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 
-// import logo from "../../Assets/images/freshcart-logo.svg";
-// import Style from './Navbar.module.css'
 import { userContext } from "./../../Context/UserContext";
 import { useNavigate } from "react-router-dom";
 
@@ -22,7 +20,6 @@ export default function Navbar() {
     setUserToken(null);
     navigate("/login");
   }
-  //
 
   return (
     <>

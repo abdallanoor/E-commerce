@@ -1,15 +1,12 @@
-import React, { useContext, useState, useEffect } from "react";
-// import Style from './Address.module.css'
+import { useContext, useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { cartContext } from "../../Context/CartContext";
+import { userContext } from "./../../Context/UserContext";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import {
-  AtSymbolIcon,
   IdentificationIcon,
   PhoneIcon,
-  LockClosedIcon,
-  CheckCircleIcon,
   BanknotesIcon,
   HomeIcon,
   TruckIcon,
@@ -17,15 +14,17 @@ import {
 import logo from "../../Assets/images/LogoSvg.svg";
 import logo2 from "../../Assets/images/LogoSvg2.svg";
 import register from "../../Assets/images/register.jpg";
-import LoadingDots from "./../LoadingDots/LoadingDots";
+import LoadingDots from "./../Loading/LoadingDots";
 
 export default function Address() {
   //Loading
   const [payLoading, setPayLoading] = useState(false);
   const [Loading, setLoading] = useState(false);
 
-  let { cashPayment, onlinePayment, cartId, getCart, getCartId } =
+  let { cashPayment, onlinePayment, cartId, getCart, cartDetails } =
     useContext(cartContext);
+
+  let { userToken } = useContext(userContext);
 
   let formik = useFormik({
     initialValues: {
@@ -57,7 +56,6 @@ export default function Address() {
           window.location.href =
             "https://pixel-store-beta.vercel.app/allorders";
         }
-
         // Reset form after submission
         formik.resetForm();
       } catch (error) {
@@ -67,9 +65,11 @@ export default function Address() {
       }
     },
   });
+
   useEffect(() => {
-    getCart();
-    getCartId();
+    if (userToken) {
+      getCart();
+    }
   }, []);
 
   return (
@@ -196,7 +196,7 @@ export default function Address() {
                     disabled={!(formik.isValid && formik.dirty)}
                     className="flex items-center w-full justify-center gap-2 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition  hover:bg-blue-700 hover:text-white"
                   >
-                    Pay Now <BanknotesIcon className="w-5 " />
+                    Online Payment <BanknotesIcon className="w-5 " />
                     {payLoading ? <LoadingDots className="bg-white" /> : ""}
                   </button>
 

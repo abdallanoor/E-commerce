@@ -1,5 +1,5 @@
-import React, { useState, useContext } from "react";
-import LoadingDots from "./../LoadingDots/LoadingDots";
+import { useState, useContext } from "react";
+import LoadingDots from "./../Loading/LoadingDots";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { cartContext } from "./../../Context/CartContext";
 

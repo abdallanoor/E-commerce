@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from "react";
+import { Fragment, useContext } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { ShoppingCartIcon, XMarkIcon } from "@heroicons/react/24/outline";
 //
@@ -18,6 +18,7 @@ export default function CartMenu() {
           <div
             className={`${
               !cartDetails ||
+              cartDetails.length === 0 ||
               cartDetails?.numOfCartItems === 0 ||
               userToken == null
                 ? "hidden"
@@ -55,14 +56,18 @@ export default function CartMenu() {
               <div className="flex items-center justify-between">
                 <p className="text-lg font-semibold">My Cart</p>
 
-                <button aria-label="Close cart" onClick={closeCart}>
-                  <div className="relative flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors dark:border-neutral-700 dark:text-white">
+                <button
+                  className="focus-visible:outline-none"
+                  onClick={closeCart}
+                >
+                  <div className="relative flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors dark:border-neutral-700 dark:text-white ">
                     <XMarkIcon className="h-6 transition-all ease-in-out hover:scale-110 " />
                   </div>
                 </button>
               </div>
 
               {!cartDetails ||
+              cartDetails.length === 0 ||
               cartDetails?.data?.products.length === 0 ||
               userToken == null ? (
                 <div className="mt-20 flex w-full flex-col items-center justify-center overflow-hidden">

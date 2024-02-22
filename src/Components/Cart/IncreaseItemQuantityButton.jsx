@@ -1,7 +1,7 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { cartContext } from "./../../Context/CartContext";
-import LoadingDots from "./../LoadingDots/LoadingDots";
-import { PlusIcon } from '@heroicons/react/24/outline';
+import LoadingDots from "./../Loading/LoadingDots";
+import { PlusIcon } from "@heroicons/react/24/outline";
 
 export default function IncreaseItemQuantityButton({
   productId,

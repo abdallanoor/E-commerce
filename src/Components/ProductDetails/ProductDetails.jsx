@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 import axios from "axios";
@@ -8,14 +8,13 @@ import { cartContext } from "../../Context/CartContext";
 // import Style from './ProductDetails.module.css'
 import { useEffect } from "react";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-import LoadingDots from "./../LoadingDots/LoadingDots";
+import LoadingDots from "./../Loading/LoadingDots";
 
-import hat from "../../Assets/images/hat-1.avif";
-import hat2 from "../../Assets/images/clothes category3.jpg";
 import ImageSlider from "./ImageSlider";
 import { ToastContainer } from "react-toastify";
 import { userContext } from "./../../Context/UserContext";
 import { toastWarning } from "./../../ToastAlerts";
+import ContentLoading from "./../Loading/ContentLoading";
 
 export default function ProductDetails() {
   const [loading, setLoading] = useState(false);
@@ -33,9 +32,6 @@ export default function ProductDetails() {
     () => getProductDetails(param.id),
     {
       cacheTime: 1000,
-      // refetchOnMount: false,
-      // staleTime: 30000,
-      // refetchInterval: 1000
     }
   );
 
@@ -74,18 +70,13 @@ export default function ProductDetails() {
       />
       <div className="flex items-center justify-center max-w-7xl m-auto  wrapper animate-fadeIn">
         {isLoading ? (
-          <div className="bg-white  w-full dark:bg-black border border-neutral-200  rounded-xl p-4 max-md:p-4 lg:p-10 dark:border-neutral-800 ">
-            <div className=" animate-pulse ">
-              <div className="w-2/3 h-4 bg-gray-200 rounded dark:bg-grayshade-100 mb-2"></div>
-              <div className="w-full h-8 bg-gray-200 rounded dark:bg-grayshade-100 mb-2"></div>
-              <div className="w-full h-8 bg-gray-200 rounded dark:bg-grayshade-100 mb-2"></div>
-              <div className="w-1/2 h-8 bg-gray-200 rounded dark:bg-grayshade-100"></div>
-            </div>
+          <div className="bg-white  w-full dark:bg-black border border-neutral-200  rounded-md p-4 max-md:p-4 lg:p-10 dark:border-neutral-800 ">
+            <ContentLoading />
           </div>
         ) : (
           <div>
             {data?.data.data ? (
-              <div className="relative flex lg:flex-row flex-col bg-white  dark:bg-black border border-neutral-200  rounded-xl p-4 max-md:p-4 lg:p-10 dark:border-neutral-800 animate-fadeIn">
+              <div className="relative flex lg:flex-row flex-col bg-white  dark:bg-black border border-neutral-200  rounded-md p-4 max-md:p-4 lg:p-10 dark:border-neutral-800 animate-fadeIn">
                 <ImageSlider
                   imageList={data?.data.data.images}
                   setImgIndex={setImgIndex}

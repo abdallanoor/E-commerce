@@ -4,7 +4,7 @@ function ImageSlider({ imageList, setImgIndex, imgIndex, alt }) {
       <div className="flex flex-row lg:flex-col flex-wrap justify-around">
         {imageList.map((image, index) => (
           <img
-            className={`lg:w-20 md:w-16 w-14 lg:h-20 md:h-16 h-14 my-5  max-md:mx-2 max-lg:mx-5  object-contain rounded-xl cursor-pointer  ${
+            className={`lg:w-20 md:w-16 w-14 lg:h-20 md:h-16 h-14 my-5  max-md:mx-2 max-lg:mx-5  object-contain rounded-md cursor-pointer  ${
               imgIndex === index ? "opacity-30" : ""
             }`}
             key={index}
@@ -17,7 +17,7 @@ function ImageSlider({ imageList, setImgIndex, imgIndex, alt }) {
         ))}
       </div>
       <img
-        className="lg:w-4/6 max-sm:w-full rounded-xl object-cover"
+        className="lg:w-4/6 max-sm:w-full rounded-md object-cover"
         src={imageList[imgIndex]}
         alt={alt}
         width="290px"

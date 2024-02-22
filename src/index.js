@@ -1,24 +1,25 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import "react-toastify/dist/ReactToastify.css";
 import UserContextProvider from "./Context/UserContext";
 import CartContextProvider from "./Context/CartContext";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
+import ProductsContextProvider from "./Context/ProductsContext";
 
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const queryClient = new QueryClient();
 root.render(
-    <QueryClientProvider client={queryClient}>
-      <UserContextProvider>
-        <CartContextProvider>
+  <QueryClientProvider client={queryClient}>
+    <UserContextProvider>
+      <CartContextProvider>
+        <ProductsContextProvider>
           <App />
-        </CartContextProvider>
-      </UserContextProvider>
-      <ReactQueryDevtools initialIsOpen="false" position="" />
-    </QueryClientProvider>
+        </ProductsContextProvider>
+      </CartContextProvider>
+    </UserContextProvider>
+  </QueryClientProvider>
 );

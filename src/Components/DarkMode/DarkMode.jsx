@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
 
@@ -19,9 +19,9 @@ export default function DarkMode() {
       element.classList.remove("dark");
     }
   }
-  onWindowMatch();
 
   useEffect(() => {
+    onWindowMatch();
     switch (theme) {
       case "dark":
         element.classList.add("dark");
@@ -32,31 +32,24 @@ export default function DarkMode() {
         localStorage.setItem("theme", "light");
         break;
       default:
-        localStorage.setItem("theme", "light");
+        localStorage.setItem("theme", "dark");
         onWindowMatch();
         break;
     }
   }, [theme]);
   return (
     <>
-      {theme == "dark" ? (
-        <SunIcon
-          className="h-5 cursor-pointer"
-          onClick={() => setTheme("light")}
-        />
-      ) : (
+      {theme === "light" ? (
         <MoonIcon
           className="h-5 cursor-pointer"
           onClick={() => setTheme("dark")}
         />
-      )}
-      {/* {options.map((opt) => (
-        <opt.icon
-          onClick={() => setTheme(opt.text)}
-          key={opt.text}
-          className={`h-5 cursor-pointer" key="light text-neutral-500 hover:text-black  dark:text-neutral-400 dark:hover:text-neutral-300 `}
+      ) : (
+        <SunIcon
+          className="h-5 cursor-pointer"
+          onClick={() => setTheme("light")}
         />
-      ))} */}
+      )}
     </>
   );
 }
