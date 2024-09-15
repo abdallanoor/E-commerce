@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 import React from "react";
 // import Style from './Notfound.module.css'
 import { Link } from "react-router-dom";
@@ -39,6 +42,7 @@ export default function Notfound() {
     </>
   );
 }
+<<<<<<< HEAD
 =======
 import React from "react";
 // import Style from './Notfound.module.css'
@@ -81,3 +85,5 @@ export default function Notfound() {
   );
 }
 >>>>>>> f53b233 (Update product details)
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef

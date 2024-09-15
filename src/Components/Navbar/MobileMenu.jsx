@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { Fragment, useEffect, useState, useContext } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Dialog, Transition } from "@headlessui/react";
@@ -127,6 +128,8 @@ export default function MobileMenu() {
   );
 }
 =======
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 import { Fragment, useEffect, useState, useContext } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Dialog, Transition } from "@headlessui/react";
@@ -250,4 +253,7 @@ export default function MobileMenu() {
     </>
   );
 }
+<<<<<<< HEAD
 >>>>>>> f53b233 (Update product details)
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef

@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 import   { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
@@ -79,6 +82,7 @@ export default function ProductItem({ product }) {
     </>
   );
 }
+<<<<<<< HEAD
 =======
 import   { useState, useContext } from "react";
 import { Link } from "react-router-dom";
@@ -161,3 +165,5 @@ export default function ProductItem({ product }) {
   );
 }
 >>>>>>> f53b233 (Update product details)
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef

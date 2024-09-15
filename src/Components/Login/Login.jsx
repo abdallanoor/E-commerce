@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 import { useContext } from "react";
 import { useState } from "react";
 import axios from "axios";
@@ -218,6 +221,7 @@ export default function Login() {
     </>
   );
 }
+<<<<<<< HEAD
 =======
 import { useContext } from "react";
 import { useState } from "react";
@@ -439,3 +443,5 @@ export default function Login() {
   );
 }
 >>>>>>> f53b233 (Update product details)
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef

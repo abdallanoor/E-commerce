@@ -27,4 +27,8 @@ export default function ContentLoading() {
       </div>
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef

@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 import React from "react";
 import axios from "axios";
 import { useQuery } from "react-query";
@@ -99,6 +102,7 @@ export default function FilterCategory({
     </>
   );
 }
+<<<<<<< HEAD
 =======
 import React from "react";
 import axios from "axios";
@@ -201,3 +205,5 @@ export default function FilterCategory({
   );
 }
 >>>>>>> f53b233 (Update product details)
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef

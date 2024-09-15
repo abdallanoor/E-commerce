@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 // import clothes from "../../Assets/images/clothes category.jpg";
 // import clothes2 from "../../Assets/images/clothes category2.jpg";
 // import clothes3 from "../../Assets/images/clothes category3.jpg";
@@ -98,6 +101,7 @@ export default function MainSlider() {
     </>
   );
 }
+<<<<<<< HEAD
 =======
 // import clothes from "../../Assets/images/clothes category.jpg";
 // import clothes2 from "../../Assets/images/clothes category2.jpg";
@@ -199,3 +203,5 @@ export default function MainSlider() {
   );
 }
 >>>>>>> f53b233 (Update product details)
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef

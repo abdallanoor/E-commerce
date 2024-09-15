@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 import { Fragment, useContext } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { ShoppingCartIcon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -87,6 +90,7 @@ export default function CartMenu() {
     </>
   );
 }
+<<<<<<< HEAD
 =======
 import { Fragment, useContext } from "react";
 import { Dialog, Transition } from "@headlessui/react";
@@ -177,3 +181,5 @@ export default function CartMenu() {
   );
 }
 >>>>>>> f53b233 (Update product details)
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef

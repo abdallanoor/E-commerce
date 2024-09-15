@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 import { toast } from "react-toastify";
 
 export const toastWarning = (message) => {
@@ -37,6 +40,7 @@ export const toastSuccess = (message) => {
     theme: "light",
   });
 };
+<<<<<<< HEAD
 =======
 import { toast } from "react-toastify";
 
@@ -77,3 +81,5 @@ export const toastSuccess = (message) => {
   });
 };
 >>>>>>> f53b233 (Update product details)
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef

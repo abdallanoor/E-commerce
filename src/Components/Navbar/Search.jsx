@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { toastWarning } from "./../../ToastAlerts";
 
@@ -25,6 +28,7 @@ export default function Search() {
     </>
   );
 }
+<<<<<<< HEAD
 =======
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { toastWarning } from "./../../ToastAlerts";
@@ -53,3 +57,5 @@ export default function Search() {
   );
 }
 >>>>>>> f53b233 (Update product details)
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef

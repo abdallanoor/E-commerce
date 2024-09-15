@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 export default function ProductLoading() {
   return (
     <>
@@ -55,6 +58,7 @@ export default function ProductLoading() {
     </>
   );
 }
+<<<<<<< HEAD
 =======
 export default function ProductLoading() {
   return (
@@ -113,3 +117,5 @@ export default function ProductLoading() {
   );
 }
 >>>>>>> f53b233 (Update product details)
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef

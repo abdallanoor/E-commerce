@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useState, useEffect } from "react";
 import axios from "axios";
 import noData from "../../Assets/images/No data.svg";
@@ -99,6 +100,8 @@ export default function AllProducts() {
   );
 }
 =======
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 import { useState, useEffect } from "react";
 import axios from "axios";
 import noData from "../../Assets/images/No data.svg";
@@ -198,4 +201,7 @@ export default function AllProducts() {
     </>
   );
 }
+<<<<<<< HEAD
 >>>>>>> f53b233 (Update product details)
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef

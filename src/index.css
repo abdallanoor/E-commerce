@@ -8,10 +8,14 @@
   --font-family: "Encode Sans Expanded", sans-serif;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* // */
 =======
 
 >>>>>>> f53b233 (Update product details)
+=======
+
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 body {
   font-family: var(--font-family) !important;
 }
@@ -36,10 +40,14 @@ input {
 }
 .lable {
 <<<<<<< HEAD
+<<<<<<< HEAD
   @apply bg-zinc-50 dark:bg-grayshade-400 text-grayshade-300 dark:text-white inline-block border   dark:border-grayshade-300 py-2 px-3 font-semibold  text-xs rounded-full my-4;
 =======
   @apply bg-zinc-50 dark:bg-grayshade-400 text-grayshade-300 dark:text-white inline-block border dark:border-grayshade-300 py-2 px-3 font-semibold  text-xs rounded-full my-4;
 >>>>>>> f53b233 (Update product details)
+=======
+  @apply bg-zinc-50 dark:bg-grayshade-400 text-grayshade-300 dark:text-white inline-block border dark:border-grayshade-300 py-2 px-3 font-semibold  text-xs rounded-full my-4;
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 }
 
 .edit-scroll::-webkit-scrollbar {
@@ -56,7 +64,10 @@ input {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 /* slick-slide */
 .slick-slide > div{
   margin: 0 5px;
@@ -69,4 +80,7 @@ html.dark .slick-prev:before,
 html.dark .slick-next:before {
   color: white;
 }
+<<<<<<< HEAD
 >>>>>>> f53b233 (Update product details)
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef

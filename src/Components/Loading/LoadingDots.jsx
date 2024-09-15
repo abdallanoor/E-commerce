@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 
 
 const dots = "mx-[1px] inline-block h-1 w-1 animate-blink rounded-md";
@@ -20,6 +23,7 @@ const LoadingDots = ({ className }) => {
 };
 
 export default LoadingDots;
+<<<<<<< HEAD
 =======
 
 
@@ -43,3 +47,5 @@ const LoadingDots = ({ className }) => {
 
 export default LoadingDots;
 >>>>>>> f53b233 (Update product details)
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef

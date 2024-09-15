@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
@@ -97,6 +98,8 @@ export default function Navbar() {
   );
 }
 =======
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -183,4 +186,7 @@ export default function Navbar() {
     </nav>
   );
 }
+<<<<<<< HEAD
 >>>>>>> f53b233 (Update product details)
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef

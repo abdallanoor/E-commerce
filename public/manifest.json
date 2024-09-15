@@ -19,10 +19,14 @@
     }
   ],
 <<<<<<< HEAD
+<<<<<<< HEAD
   "start_url": ".",
 =======
   "start_url": "https://pixel-store-beta.vercel.app/",
 >>>>>>> f53b233 (Update product details)
+=======
+  "start_url": "https://pixel-store-beta.vercel.app/",
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"

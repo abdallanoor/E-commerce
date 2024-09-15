@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 import { useState, useContext } from "react";
 import { cartContext } from "./../../Context/CartContext";
 import LoadingDots from "./../Loading/LoadingDots";
@@ -30,6 +33,7 @@ export default function ReduceItemQuantityButton({ productId, productCount }) {
     </>
   );
 }
+<<<<<<< HEAD
 =======
 import { useState, useContext } from "react";
 import { cartContext } from "./../../Context/CartContext";
@@ -63,3 +67,5 @@ export default function ReduceItemQuantityButton({ productId, productCount }) {
   );
 }
 >>>>>>> f53b233 (Update product details)
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef

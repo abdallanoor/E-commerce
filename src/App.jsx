@@ -1,7 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import { useContext, useEffect } from "react";
 >>>>>>> f53b233 (Update product details)
+=======
+import { useContext, useEffect } from "react";
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Layout from "./Components/Layout/Layout";
 import Home from "./Components/Home/Home";
@@ -11,9 +15,12 @@ import Register from "./Components/Register/Register";
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
 import { userContext } from "./Context/UserContext";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useContext, useEffect } from "react";
 =======
 >>>>>>> f53b233 (Update product details)
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import Address from "./Components/Address/Address";
 import Orders from "./Components/Orders/Orders";

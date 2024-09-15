@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 import { useState, useEffect } from "react";
 
 import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
@@ -54,6 +57,7 @@ export default function DarkMode() {
     </>
   );
 }
+<<<<<<< HEAD
 =======
 import { useState, useEffect } from "react";
 
@@ -111,3 +115,5 @@ export default function DarkMode() {
   );
 }
 >>>>>>> f53b233 (Update product details)
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef

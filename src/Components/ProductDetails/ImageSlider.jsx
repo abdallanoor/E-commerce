@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ImageSlider({ imageList, setImgIndex, imgIndex, alt }) {
   return (
     <div className="flex lg:flex-row lg:min-w-96 h-full w-full basis-full lg:basis-5/12 flex-col-reverse justify-around items-center">
@@ -30,6 +31,8 @@ function ImageSlider({ imageList, setImgIndex, imgIndex, alt }) {
 
 export default ImageSlider;
 =======
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 import Slider from "react-slick";
 
 function ImageSlider({ imageList, setImgIndex, imgIndex, alt }) {
@@ -70,4 +73,7 @@ function ImageSlider({ imageList, setImgIndex, imgIndex, alt }) {
 }
 
 export default ImageSlider;
+<<<<<<< HEAD
 >>>>>>> f53b233 (Update product details)
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef

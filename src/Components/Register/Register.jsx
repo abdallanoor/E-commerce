@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 import { useState } from "react";
 import axios from "axios";
 import { useFormik } from "formik";
@@ -377,6 +380,7 @@ export default function Register() {
     </>
   );
 }
+<<<<<<< HEAD
 =======
 import { useState } from "react";
 import axios from "axios";
@@ -757,3 +761,5 @@ export default function Register() {
   );
 }
 >>>>>>> f53b233 (Update product details)
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef

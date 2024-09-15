@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import axios from "axios";
 import { createContext, useEffect, useState, useContext } from "react";
 import { userContext } from "./UserContext";
@@ -154,6 +155,8 @@ export default function CartContextProvider(props) {
   );
 }
 =======
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 import axios from "axios";
 import { createContext, useEffect, useState, useContext } from "react";
 import { userContext } from "./UserContext";
@@ -298,4 +301,7 @@ export default function CartContextProvider(props) {
     </cartContext.Provider>
   );
 }
+<<<<<<< HEAD
 >>>>>>> f53b233 (Update product details)
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef

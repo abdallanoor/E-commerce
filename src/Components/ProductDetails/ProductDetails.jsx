@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -129,6 +130,8 @@ export default function ProductDetails() {
   );
 }
 =======
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -267,4 +270,7 @@ export default function ProductDetails() {
     </>
   );
 }
+<<<<<<< HEAD
 >>>>>>> f53b233 (Update product details)
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef

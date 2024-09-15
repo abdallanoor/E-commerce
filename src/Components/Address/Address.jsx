@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 import { useContext, useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { cartContext } from "../../Context/CartContext";
@@ -277,6 +280,7 @@ export default function Address() {
     </>
   );
 }
+<<<<<<< HEAD
 =======
 import { useContext, useState, useEffect } from "react";
 import { useFormik } from "formik";
@@ -557,3 +561,5 @@ export default function Address() {
   );
 }
 >>>>>>> f53b233 (Update product details)
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef

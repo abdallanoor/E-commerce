@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
 import { createContext, useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
@@ -32,6 +35,7 @@ export default function UserContextProvider(props) {
     </userContext.Provider>
   );
 }
+<<<<<<< HEAD
 =======
 import { createContext, useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
@@ -67,3 +71,5 @@ export default function UserContextProvider(props) {
   );
 }
 >>>>>>> f53b233 (Update product details)
+=======
+>>>>>>> f53b233fdd181bfd56120d69fbd1cc685acee5ef
