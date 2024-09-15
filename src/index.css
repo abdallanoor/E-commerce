@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap");
+:root {
+  --font-family: "Encode Sans Expanded", sans-serif;
+}
+
+body {
+  font-family: var(--font-family) !important;
+}
+
+body::-webkit-scrollbar-track {
+  @apply dark:bg-grayshade-400 bg-zinc-100;
+}
+
+body::-webkit-scrollbar {
+  @apply bg-grayshade-200 w-[8px];
+}
+
+body::-webkit-scrollbar-thumb {
+  @apply bg-blue-600 border border-blue-600;
+}
+a,
+input {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400  focus-visible:ring-offset-neutral-50 dark:focus-visible:ring-neutral-600 dark:focus-visible:ring-offset-neutral-900;
+}
+.wrapper {
+  @apply m-auto max-w-[1480px] lg:px-14 md:px-14 px-4 lg:min-h-[calc(100vh-76px)] py-3;
+}
+.lable {
+  @apply bg-zinc-50 dark:bg-grayshade-400 text-grayshade-300 dark:text-white inline-block border dark:border-grayshade-300 py-2 px-3 font-semibold  text-xs rounded-full my-4;
+}
+
+.edit-scroll::-webkit-scrollbar {
+  display: none;
+}
+.h-section {
+  height: calc(100vh - 76px);
+}
+.texture-animated {
+  background-image: url("./Assets/images/texture-animated.svg");
+  background-size: contain;
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+
+/* slick-slide */
+.slick-slide > div{
+  margin: 0 5px;
+}
+/* Change the color for dark mode */
+.slick-prev:before, .slick-next:before {
+  color: black ;
+}
+html.dark .slick-prev:before, 
+html.dark .slick-next:before {
+  color: white;
+}
