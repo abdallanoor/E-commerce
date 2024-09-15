@@ -11,7 +11,7 @@ function ImageSlider({ imageList, setImgIndex, imgIndex, alt }) {
   return (
     <div className="w-full basis-1/3 flex flex-col gap-5 items-center">
       <img
-        className="lg:w-72 max-sm:w-full h-96 rounded-md object-cover"
+        className="lg:w-72 max-sm:w-full h-96 border border-neutral-200 rounded-md object-cover dark:border-transparent"
         src={imageList[imgIndex]}
         alt={alt}
         width="290px"
@@ -21,8 +21,10 @@ function ImageSlider({ imageList, setImgIndex, imgIndex, alt }) {
       <Slider {...settings} className="w-64">
         {imageList.map((image, index) => (
           <img
-            className={`rounded-md w-20 h-20 object-cover cursor-pointer border hover:border-grayshade-50 dark:border-grayshade-300 transition-colors ${
-              imgIndex === index ? "opacity-50 border-grayshade-50" : ""
+            className={`rounded-md w-20 h-20 object-cover cursor-pointer border hover:border-grayshade-50 dark:border-transparent transition-colors ${
+              imgIndex === index
+                ? "opacity-50 border-grayshade-50 dark:border-transparent"
+                : ""
             }`}
             key={index}
             src={image}

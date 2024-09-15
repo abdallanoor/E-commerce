@@ -13,17 +13,16 @@ export default function ContentLoading() {
       </div>
 
       <div className="w-full lg:basis-4/6">
-        <div className="w-2/3 h-4 bg-gray-200 rounded dark:bg-grayshade-100 mb-2"></div>
-        <div className="w-full h-8 bg-gray-200 rounded dark:bg-grayshade-100 mb-2"></div>
         <div className="w-full h-8 bg-gray-200 rounded dark:bg-grayshade-100 mb-2"></div>
         <div className="w-1/2 h-8 bg-gray-200 rounded dark:bg-grayshade-100"></div>
+        <div className="w-24  h-8 bg-gray-200 rounded dark:bg-grayshade-100 my-4"></div>
 
         <div className="w-2/3 h-4 bg-gray-200 rounded dark:bg-grayshade-100 mb-2 mt-10"></div>
         <div className="w-full h-8 bg-gray-200 rounded dark:bg-grayshade-100 mb-2"></div>
         <div className="w-full h-8 bg-gray-200 rounded dark:bg-grayshade-100 mb-2"></div>
         <div className="w-1/2 h-8 bg-gray-200 rounded dark:bg-grayshade-100"></div>
 
-        <div className="w-1/4 h-8 bg-gray-200 rounded dark:bg-grayshade-100 mt-10"></div>
+        <div className="w-full md:w-44 h-8 bg-gray-200 rounded dark:bg-grayshade-100 mt-10"></div>
       </div>
     </div>
   );
