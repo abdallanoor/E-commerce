@@ -1,10 +1,10 @@
-import   { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { toastWarning } from "../../ToastAlerts";
 import { cartContext } from "./../../Context/CartContext";
 import { userContext } from "./../../Context/UserContext";
-import LoadingDots from './../Loading/LoadingDots';
+import LoadingDots from "./../Loading/LoadingDots";
 
 export default function ProductItem({ product }) {
   const [loading, setLoading] = useState(false);
@@ -27,7 +27,7 @@ export default function ProductItem({ product }) {
     <>
       <div
         key={product.id}
-        className="md:p-4 lg:p-7 p-3 rounded-lg border border-gray-100  bg-white dark:border-neutral-800 dark:bg-black shadow-md w-full justify-center justify-items-center justify-self-center animate-fadeIn"
+        className="md:p-4 lg:p-7 p-3 rounded-lg border border-gray-100  bg-white dark:border-neutral-800 dark:bg-black shadow-md w-full justify-center justify-items-center justify-self-center"
       >
         <Link to={`/ProductDetails/${product.id}`}>
           <img

@@ -1,5 +1,9 @@
 import { useContext, useEffect } from "react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  Navigate,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
 import Layout from "./Components/Layout/Layout";
 import Home from "./Components/Home/Home";
 import Notfound from "./Components/Notfound/Notfound";
@@ -10,16 +14,26 @@ import { userContext } from "./Context/UserContext";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import Address from "./Components/Address/Address";
 import Orders from "./Components/Orders/Orders";
+import AllProducts from "./Components/AllProducts/AllProducts";
 import "./App.css";
 
 let Routers = createBrowserRouter([
+  {
+    path: "/",
+    element: <Navigate to="/products/" replace />,
+  },
   {
     path: "/",
     element: <Layout />,
     children: [
       {
         index: true,
-        element: <Home />,
+        path: "/products/",
+        element: <AllProducts />,
+      },
+      {
+        path: "/products/:category",
+        element: <AllProducts />,
       },
       {
         path: "productdetails/:id",

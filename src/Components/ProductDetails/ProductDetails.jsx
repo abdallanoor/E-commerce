@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
 
 import axios from "axios";
 import { useQuery } from "react-query";
@@ -18,20 +17,21 @@ import ContentLoading from "./../Loading/ContentLoading";
 
 export default function ProductDetails() {
   const [loading, setLoading] = useState(false);
-  const [productDetails, setProductDetails] = useState([]);
-  const [imageList, setImageList] = useState([]);
   const [imgIndex, setImgIndex] = useState(0);
 
-  let param = useParams();
+  let { id } = useParams();
 
   function getProductDetails(id) {
     return axios.get(`https://ecommerce.routemisr.com/api/v1/products/${id}`);
   }
-  let { data, isLoading, refetch } = useQuery(
-    "ProductDetails",
-    () => getProductDetails(param.id),
+
+  const { data, isLoading } = useQuery(
+    ["ProductDetails", id],
+    () => getProductDetails(id),
     {
-      cacheTime: 1000,
+      cacheTime: 1000 * 60 * 10, // Cache data for 10 minutes
+      refetchOnWindowFocus: false, // Do not refetch when window gains focus
+      refetchOnReconnect: false, // Do not refetch on reconnect
     }
   );
 
@@ -42,7 +42,7 @@ export default function ProductDetails() {
   async function addProduct(productId) {
     if (userToken) {
       setLoading(true);
-      let response = await addToCart(productId);
+      await addToCart(productId);
       setLoading(false);
       openCart();
       getCart();
@@ -50,11 +50,6 @@ export default function ProductDetails() {
       toastWarning("Login First");
     }
   }
-  useEffect(() => {
-    refetch();
-  }, [param]);
-
-  // test merge
 
   return (
     <>
@@ -78,7 +73,7 @@ export default function ProductDetails() {
         ) : (
           <>
             {data?.data.data ? (
-              <div className="relative flex lg:flex-row flex-col gap-5 bg-white dark:bg-black border border-neutral-200  rounded-md p-4 max-md:p-4 lg:p-10 dark:border-neutral-800 animate-fadeIn">
+              <div className="relative w-full flex lg:flex-row flex-col gap-5 bg-white dark:bg-black border border-neutral-200  rounded-md p-4 max-md:p-4 lg:p-10 dark:border-neutral-800 animate-fadeIn">
                 <ImageSlider
                   imageList={data?.data.data.images}
                   setImgIndex={setImgIndex}
@@ -86,7 +81,7 @@ export default function ProductDetails() {
                   alt={data?.data.data.title}
                 />
                 <div className="flex flex-col justify-center basis-full lg:basis-8/12">
-                  <p className="text-lg font-semibold">
+                  <p className="text-2xl font-semibold">
                     {data?.data.data.title}
                   </p>
                   <span className="lable w-max">
@@ -107,9 +102,9 @@ export default function ProductDetails() {
                     <div className="flex text-white justify-between items-center">
                       <button
                         onClick={() => addProduct(data?.data.data.id)}
-                        className="py-2 px-4 button flex gap-2 items-center text-center  rounded-lg text-white bg-blue-600"
+                        className="py-2 px-4 button flex gap-2 items-center text-center rounded-lg text-white bg-blue-600"
                       >
-                        Add To Cart
+                        Add to cart
                         {loading ? (
                           <LoadingDots className="bg-white" />
                         ) : (
@@ -126,15 +121,6 @@ export default function ProductDetails() {
           </>
         )}
       </div>
-
-      {/* <div>
-        <ImageSlider
-          imageList={data?.data.data.images}
-          setImgIndex={setImgIndex}
-          imgIndex={imgIndex}
-          alt={data?.data.data.title}
-        />
-      </div> */}
     </>
   );
 }
