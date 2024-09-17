@@ -20,7 +20,7 @@ import "./App.css";
 let Routers = createBrowserRouter([
   {
     path: "/",
-    element: <Navigate to="/products/" replace />,
+    element: <Navigate to="/products" replace />,
   },
   {
     path: "/",
@@ -28,11 +28,7 @@ let Routers = createBrowserRouter([
     children: [
       {
         index: true,
-        path: "/products/",
-        element: <AllProducts />,
-      },
-      {
-        path: "/products/:category",
+        path: "/products",
         element: <AllProducts />,
       },
       {

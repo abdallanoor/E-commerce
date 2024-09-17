@@ -1,18 +1,17 @@
 export const navLinks = [
-  { name: "All", path: "/products/" },
+  { name: "All Products", path: "/products" },
   { name: "Orders", path: "/allorders" },
 ];
 
 export const categories = [
-  { name: "All Products", slug: "" },
   {
     name: "Men's Fashion",
-    slug: "men's-fashion",
+    id: "6439d5b90049ad0b52b90048",
   },
   {
     name: "Women's Fashion",
-    slug: "women's-fashion",
+    id: "6439d58a0049ad0b52b9003f",
   },
-  { name: "Electronics", slug: "electronics" },
-  { name: "Mobiles", slug: "mobiles" },
+  { name: "Electronics", id: "6439d2d167d9aa4ca970649f" },
+  { name: "Mobiles", id: "6439d2f467d9aa4ca97064a8" },
 ];

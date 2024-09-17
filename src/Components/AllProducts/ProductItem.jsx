@@ -32,6 +32,8 @@ export default function ProductItem({ product }) {
         <Link to={`/ProductDetails/${product.id}`}>
           <img
             className="w-full rounded-lg self-stretch h-72 min-h-52 mb-7 object-cover"
+            width="233px"
+            height="288px"
             src={product.imageCover}
             alt={product.title}
           />
