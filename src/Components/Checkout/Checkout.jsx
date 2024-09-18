@@ -27,7 +27,7 @@ export default function Address() {
       action === "onlinePayment" ? setPayLoading(true) : setLoading(true);
       const { data } =
         action === "onlinePayment"
-          ? await onlinePayment(cartId, "http://localhost:3000", {
+          ? await onlinePayment(cartId, "https://pixelstore.vercel.app", {
               shippingAddress: values,
             })
           : await cashPayment(cartId, { shippingAddress: values });
@@ -35,7 +35,7 @@ export default function Address() {
       window.location.href =
         action === "onlinePayment"
           ? data?.session.url
-          : "http://localhost:3000/allorders";
+          : "https://pixelstore.vercel.app/allorders";
     } catch (error) {
       console.error("Error submitting form:", error);
     } finally {
