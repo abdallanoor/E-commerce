@@ -12,7 +12,7 @@ import Register from "./Components/Register/Register";
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
 import { userContext } from "./Context/UserContext";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
-import Address from "./Components/Address/Address";
+import Checkout from "./Components/Checkout/Checkout";
 import Orders from "./Components/Orders/Orders";
 import AllProducts from "./Components/AllProducts/AllProducts";
 import "./App.css";
@@ -21,6 +21,10 @@ let Routers = createBrowserRouter([
   {
     path: "/",
     element: <Navigate to="/products" replace />,
+  },
+  {
+    path: "/cart",
+    element: <Navigate to="/checkout" replace />, //because stripe redirect to /cart
   },
   {
     path: "/",
@@ -36,17 +40,20 @@ let Routers = createBrowserRouter([
         element: <ProductDetails />,
       },
       {
-        path: "address",
+        path: "checkout",
         element: (
           <ProtectedRoute>
-            {" "}
-            <Address />{" "}
+            <Checkout />
           </ProtectedRoute>
         ),
       },
       {
         path: "allorders",
-        element: <Orders />,
+        element: (
+          <ProtectedRoute>
+            <Orders />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

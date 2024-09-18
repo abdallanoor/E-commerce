@@ -28,7 +28,7 @@ input {
   @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400  focus-visible:ring-offset-neutral-50 dark:focus-visible:ring-neutral-600 dark:focus-visible:ring-offset-neutral-900;
 }
 .wrapper {
-  @apply m-auto max-w-[1480px] lg:px-14 md:px-14 px-4 lg:min-h-[calc(100vh-76px)] py-3;
+  @apply m-auto max-w-[1480px] lg:px-14 md:px-14 px-4 py-3;
 }
 .lable {
   @apply bg-zinc-50 dark:bg-grayshade-400 text-grayshade-300 dark:text-white inline-block border dark:border-grayshade-300 py-2 px-3 font-semibold  text-xs rounded-full my-4;

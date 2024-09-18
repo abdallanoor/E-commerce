@@ -5,8 +5,8 @@ export default function ProductLoading() {
         <div className="w-full animate-pulse ">
           <div className="w-full h-64 mb-8 bg-gray-300 rounded-lg md:h-72 dark:bg-neutral-700"></div>
 
-          <p className="w-48 h-3 bg-gray-200 rounded-lg dark:bg-grayshade-100"></p>
-          <p className="w-72 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-grayshade-100"></p>
+          <p className="w-3/5 h-3 bg-gray-200 rounded-lg dark:bg-grayshade-100"></p>
+          <p className="w-5/6 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-grayshade-100"></p>
           <p className="w-20 h-8 my-7 bg-gray-200 rounded-2xl dark:bg-grayshade-100"></p>
           <div className="flex justify-between items-end">
             <div>

@@ -4,8 +4,6 @@ import axios from "axios";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { cartContext } from "../../Context/CartContext";
-// import Style from './ProductDetails.module.css'
-import { useEffect } from "react";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import LoadingDots from "./../Loading/LoadingDots";
 
@@ -29,9 +27,9 @@ export default function ProductDetails() {
     ["ProductDetails", id],
     () => getProductDetails(id),
     {
-      cacheTime: 1000 * 60 * 10, // Cache data for 10 minutes
-      refetchOnWindowFocus: false, // Do not refetch when window gains focus
-      refetchOnReconnect: false, // Do not refetch on reconnect
+      cacheTime: 1000 * 60 * 10,
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
     }
   );
 

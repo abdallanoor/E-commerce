@@ -29,7 +29,7 @@ export default function Navbar() {
 
       <div className="flex w-full items-center">
         {/* Logo and Links */}
-        <div className="flex w-full md:w-1/3">
+        <div className="flex w-full md:w-1/2">
           <Link
             className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
             to="/"
