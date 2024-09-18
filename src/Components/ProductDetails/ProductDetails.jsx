@@ -20,7 +20,7 @@ export default function ProductDetails() {
   let { id } = useParams();
 
   function getProductDetails(id) {
-    return axios.get(`https://ecommerce.routemisr.com/api/v1/products/${id}`);
+    return axios.get(`${process.env.REACT_APP_API_KEY}/products/${id}`);
   }
 
   const { data, isLoading } = useQuery(

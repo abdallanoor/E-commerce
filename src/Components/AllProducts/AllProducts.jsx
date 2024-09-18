@@ -20,8 +20,8 @@ export default function AllProducts() {
 
   const fetchProducts = async ({ pageParam = 1 }) => {
     const url = categoryId
-      ? `https://ecommerce.routemisr.com/api/v1/products?category=${categoryId}&page=${pageParam}&limit=6`
-      : `https://ecommerce.routemisr.com/api/v1/products?page=${pageParam}&limit=6`;
+      ? `${process.env.REACT_APP_API_KEY}/products?category=${categoryId}&page=${pageParam}&limit=6`
+      : `${process.env.REACT_APP_API_KEY}/products?page=${pageParam}&limit=6`;
     const response = await axios.get(url);
     return response.data;
   };
@@ -68,7 +68,7 @@ export default function AllProducts() {
         <div className="flex lg:flex-row flex-col-reverse">
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 md:grid-cols-2 lg:gap-5 gap-4 w-full animate-fadeIn">
             {isLoading ? (
-              [1, 2, 3].map((i) => <ProductLoading key={i} />)
+              [1, 2, 3, 4, 5, 6].map((i) => <ProductLoading key={i} />)
             ) : (
               <>
                 {data?.pages.map((page) =>

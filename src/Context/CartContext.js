@@ -21,7 +21,7 @@ export default function CartContextProvider(props) {
 
   async function addToCart(productId) {
     let response = await axios.post(
-      `https://ecommerce.routemisr.com/api/v1/cart`,
+      `${process.env.REACT_APP_API_KEY}/cart`,
       {
         productId,
       },
@@ -33,7 +33,7 @@ export default function CartContextProvider(props) {
   }
   async function removeCart(productId) {
     let response = await axios.delete(
-      `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
+      `${process.env.REACT_APP_API_KEY}/cart/${productId}`,
       {
         headers,
       }
@@ -42,7 +42,7 @@ export default function CartContextProvider(props) {
   }
   async function increaseItemQuantity(productId, count) {
     let response = await axios.put(
-      `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
+      `${process.env.REACT_APP_API_KEY}/cart/${productId}`,
       {
         count,
       },
@@ -54,7 +54,7 @@ export default function CartContextProvider(props) {
   }
   async function reduceItemQuantity(productId, count) {
     let response = await axios.put(
-      `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
+      `${process.env.REACT_APP_API_KEY}/cart/${productId}`,
       {
         count,
       },
@@ -66,7 +66,7 @@ export default function CartContextProvider(props) {
   }
   async function updateCart(productId, count) {
     let response = await axios.put(
-      `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
+      `${process.env.REACT_APP_API_KEY}/cart/${productId}`,
       {
         count,
       },
@@ -78,7 +78,7 @@ export default function CartContextProvider(props) {
   }
   async function onlinePayment(cartId, params, values) {
     let response = await axios.post(
-      `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${params}`,
+      `${process.env.REACT_APP_API_KEY}/orders/checkout-session/${cartId}?url=${params}`,
       {
         values,
       },
@@ -90,7 +90,7 @@ export default function CartContextProvider(props) {
   }
   async function cashPayment(cartId, values) {
     let response = await axios.post(
-      `https://ecommerce.routemisr.com/api/v1/orders/${cartId}`,
+      `${process.env.REACT_APP_API_KEY}/orders/${cartId}`,
       {
         values,
       },
@@ -103,7 +103,7 @@ export default function CartContextProvider(props) {
   //get cart
   async function getCart() {
     let { data } = await axios
-      .get("https://ecommerce.routemisr.com/api/v1/cart", {
+      .get(`${process.env.REACT_APP_API_KEY}/cart`, {
         headers,
       })
       .catch((err) => err);
@@ -136,6 +136,7 @@ export default function CartContextProvider(props) {
         setCartDetails,
         getCart,
         assignHeader,
+        headers,
       }}
     >
       {props.children}

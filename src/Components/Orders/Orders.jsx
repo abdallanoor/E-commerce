@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import noData from "../../Assets/images/No data.svg";
 import { userContext } from "../../Context/UserContext";
 import { cartContext } from "../../Context/CartContext";
-import ContentLoading from "../Loading/ContentLoading";
+import OrderLoading from "../Loading/OrderLoading";
 import { useQuery } from "react-query";
 import axios from "axios";
 
@@ -18,7 +18,7 @@ export default function Orders() {
 
   const fetchOrders = async () => {
     const { data } = await axios.get(
-      `https://ecommerce.routemisr.com/api/v1/orders/user/${userId}`
+      `${process.env.REACT_APP_API_KEY}/orders/user/${userId}`
     );
     return data.reverse();
   };
@@ -31,9 +31,9 @@ export default function Orders() {
 
   return (
     <section className="flex items-center wrapper animate-fadeIn">
-      <div className="flex-1 max-w-7xl px-6 py-6 mx-auto bg-white rounded-md border dark:border-neutral-800 dark:bg-black lg:py-10 lg:px-10">
+      <div className="flex-1 px-6 py-6 mx-auto bg-white rounded-md border dark:border-neutral-800 dark:bg-black lg:py-10 lg:px-10 ">
         {ordersIsLoading ? (
-          <ContentLoading />
+          <OrderLoading />
         ) : orders && orders.length > 0 && userId ? (
           <>
             <OrderHeader
@@ -70,33 +70,42 @@ function OrderHeader({ userName, orderId }) {
 
 function OrderItems({ products }) {
   return (
-    <div className="max-w-4xl mx-auto mb-10">
+    <div className="max-w-4xl mx-auto mb-8">
       <h2 className="mb-4 text-xl font-medium dark:text-grayshade-50">
         What you ordered:
       </h2>
-      {products?.map(({ _id, product, count }) => (
-        <div
-          key={_id}
-          className="p-5 mb-8 sm:flex sm:items-center gap-5 bg-white rounded-md shadow dark:bg-grayshade-400"
-        >
-          <Link to={`/ProductDetails/${product.id}`}>
-            <img
-              className="w-full sm:w-20 h-60 sm:h-20 rounded-sm object-cover max-sm:mb-2"
-              src={product.imageCover}
-              alt={product.title}
-            />
-          </Link>
-          <div>
+      <div className="flex flex-col gap-5">
+        {products?.map(({ _id, product, count }) => (
+          <div
+            key={_id}
+            className="p-5 sm:flex sm:items-center gap-5 bg-white rounded-md shadow dark:bg-grayshade-400"
+          >
             <Link
-              className="text-lg font-medium dark:text-grayshade-50"
               to={`/ProductDetails/${product.id}`}
+              className="w-full sm:w-24 h-60 sm:h-20"
             >
-              {product.title}
+              <img
+                className="size-full rounded-sm object-cover max-sm:mb-2"
+                src={product.imageCover}
+                alt={product.title}
+                width={80}
+                height={80}
+              />
             </Link>
-            <ProductDetails product={product} count={count} />
+            <div className="w-full">
+              <Link
+                className="text-lg font-medium dark:text-grayshade-50"
+                to={`/ProductDetails/${product.id}`}
+              >
+                {product.title.length > 70
+                  ? product.title.substring(0, 70) + "..."
+                  : product.title}
+              </Link>
+              <ProductDetails product={product} count={count} />
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

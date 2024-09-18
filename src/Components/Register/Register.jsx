@@ -47,7 +47,7 @@ export default function Register() {
   async function registerSubmit(values) {
     setLoading(true);
     let { data } = await axios
-      .post("https://ecommerce.routemisr.com/api/v1/auth/signup", values)
+      .post(`${process.env.REACT_APP_API_KEY}/auth/signup`, values)
       .catch((error) => {
         setLoading(false);
         setError(error.response.data.message);
