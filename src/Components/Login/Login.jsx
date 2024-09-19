@@ -56,8 +56,8 @@ export default function Login() {
   //Set Variables Use Hook useFormik
   let formik = useFormik({
     initialValues: {
-      email: "",
-      password: "",
+      email: "abdallah@yahoo.com",
+      password: "Abdo123",
     },
     validationSchema: userSchema,
     onSubmit: registerSubmit,

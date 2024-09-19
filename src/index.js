@@ -10,6 +10,7 @@ import CartContextProvider from "./Context/CartContext";
 import ProductsContextProvider from "./Context/ProductsContext";
 
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ToastContainer } from "react-toastify";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -19,6 +20,18 @@ root.render(
     <UserContextProvider>
       <CartContextProvider>
         <ProductsContextProvider>
+          <ToastContainer
+            position="top-center"
+            autoClose={2000}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+          />
           <App />
         </ProductsContextProvider>
       </CartContextProvider>

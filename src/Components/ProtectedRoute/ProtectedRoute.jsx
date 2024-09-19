@@ -1,4 +1,5 @@
 import { Navigate } from "react-router-dom";
+import { toastWarning } from "../../ToastAlerts";
 
 export default function ProtectedRoute(props) {
   if (localStorage.getItem("userToken") !== null) {
@@ -6,6 +7,10 @@ export default function ProtectedRoute(props) {
     return props.children;
   } else {
     //as component
-    return <Navigate to={"/login"} />;
+    return (
+      <>
+        <Navigate to={"/login"} />;{toastWarning("Login First")}
+      </>
+    );
   }
 }

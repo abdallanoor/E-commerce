@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { toastWarning } from "../../ToastAlerts";
 import { cartContext } from "./../../Context/CartContext";
@@ -11,6 +11,7 @@ export default function ProductItem({ product }) {
 
   let { addToCart, openCart, getCart } = useContext(cartContext);
   let { userToken } = useContext(userContext);
+  const navigate = useNavigate();
 
   async function addProduct(productId) {
     if (userToken) {
@@ -20,6 +21,7 @@ export default function ProductItem({ product }) {
       setLoading(false);
       openCart();
     } else {
+      navigate("/login");
       toastWarning("Login First");
     }
   }
@@ -65,7 +67,7 @@ export default function ProductItem({ product }) {
           <div className="flex text-white justify-between items-center">
             <button
               onClick={() => addProduct(product.id)}
-              className="py-2 px-4 button flex gap-2 text-sm items-center text-center rounded-lg text-white bg-blue-600"
+              className="py-2 px-4 button flex gap-2 text-sm items-center text-center rounded-lg text-white dark:text-black bg-black dark:bg-white"
             >
               Add To Cart
               {loading ? (

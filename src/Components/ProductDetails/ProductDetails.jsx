@@ -2,13 +2,12 @@ import { useContext, useState } from "react";
 
 import axios from "axios";
 import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { cartContext } from "../../Context/CartContext";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import LoadingDots from "./../Loading/LoadingDots";
 
 import ImageSlider from "./ImageSlider";
-import { ToastContainer } from "react-toastify";
 import { userContext } from "./../../Context/UserContext";
 import { toastWarning } from "./../../ToastAlerts";
 import ContentLoading from "./../Loading/ContentLoading";
@@ -18,6 +17,7 @@ export default function ProductDetails() {
   const [imgIndex, setImgIndex] = useState(0);
 
   let { id } = useParams();
+  const navigate = useNavigate();
 
   function getProductDetails(id) {
     return axios.get(`${process.env.REACT_APP_API_KEY}/products/${id}`);
@@ -45,24 +45,13 @@ export default function ProductDetails() {
       openCart();
       getCart();
     } else {
+      navigate("/login");
       toastWarning("Login First");
     }
   }
 
   return (
     <>
-      <ToastContainer
-        position="top-center"
-        autoClose={2000}
-        hideProgressBar
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
       <div className="flex items-center justify-center max-w-7xl m-auto wrapper animate-fadeIn">
         {isLoading ? (
           <div className="bg-white w-full dark:bg-black border border-neutral-200  rounded-md p-4 max-md:p-4 lg:p-10 dark:border-neutral-800 ">
@@ -88,7 +77,7 @@ export default function ProductDetails() {
                   <p className="font-medium text-grayshade-50 my-5">
                     {data?.data.data.description}
                   </p>
-                  <div className="flex justify-between items-center">
+                  <div className="flex gap-5 flex-col sm:flex-row sm:items-center sm:justify-between">
                     <div>
                       <p className="text-grayshade-100 dark:text-grayshade-50 text-lg">
                         Price
@@ -100,7 +89,7 @@ export default function ProductDetails() {
                     <div className="flex text-white justify-between items-center">
                       <button
                         onClick={() => addProduct(data?.data.data.id)}
-                        className="py-2 px-4 button flex gap-2 items-center text-center rounded-lg text-white bg-blue-600"
+                        className="max-sm:w-full py-2 px-4 button flex gap-2 text-sm items-center text-center justify-center rounded-lg text-white dark:text-black bg-black dark:bg-white"
                       >
                         Add to cart
                         {loading ? (

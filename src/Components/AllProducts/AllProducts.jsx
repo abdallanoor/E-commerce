@@ -51,18 +51,6 @@ export default function AllProducts() {
 
   return (
     <>
-      <ToastContainer
-        position="top-center"
-        autoClose={2000}
-        hideProgressBar
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
       <section className="wrapper min-h-screen">
         <h1 className="text-3xl font-bold mb-8">Products</h1>
         <div className="flex lg:flex-row flex-col-reverse">
