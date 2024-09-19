@@ -23,7 +23,7 @@ export default function CartMenu() {
               userToken == null
                 ? "hidden"
                 : ""
-            } absolute  right-0 top-0 -mr-2 -mt-2 h-4 w-4 rounded bg-blue-600 text-[11px] font-medium text-white`}
+            } absolute  right-0 top-0 -mr-2 -mt-2 h-4 w-4 rounded bg-black text-[11px] font-medium text-white dark:bg-white dark:text-black`}
           >
             {cartDetails ? <div>{cartDetails.numOfCartItems}</div> : ""}
           </div>

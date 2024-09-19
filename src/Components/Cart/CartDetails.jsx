@@ -88,7 +88,7 @@ export default function CartDetails() {
       <Link
         onClick={closeCart}
         to={"/checkout"}
-        className="block w-full rounded-full bg-blue-600 p-3 text-center text-sm font-medium text-white opacity-90 hover:opacity-100"
+        className="block w-full rounded-full p-3 text-center text-sm font-medium opacity-90 hover:opacity-100 text-white dark:text-black bg-black dark:bg-white"
       >
         Proceed to Checkout
       </Link>

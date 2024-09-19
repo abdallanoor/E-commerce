@@ -78,7 +78,7 @@ export default function Address() {
         formik.setValues({ ...formik.values, submitAction: action })
       }
       disabled={!(formik.isValid && formik.dirty)}
-      className="flex items-center w-full justify-center gap-2 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-blue-700 hover:text-white disabled:opacity-40"
+      className="flex items-center w-full justify-center gap-2 rounded-md px-12 py-3 text-sm font-medium text-white dark:text-black bg-black dark:bg-white disabled:opacity-70"
     >
       {label} <Icon className="w-5" />{" "}
       {isLoading ? <LoadingDots className="bg-white" /> : ""}
@@ -101,8 +101,8 @@ export default function Address() {
           </div>
         </section>
 
-        <main className="px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-7">
-          <div className="max-w-xl lg:max-w-3xl m-auto">
+        <main className="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-7">
+          <div className="max-w-xl lg:max-w-3xl">
             <div className="relative -mt-16 block lg:hidden">
               <Link
                 className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-white text-blue-600 sm:h-20 sm:w-20 dark:bg-black"
@@ -112,51 +112,42 @@ export default function Address() {
               </Link>
             </div>
 
+            <div>
+              <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl dark:text-white">
+                Checkout
+              </h1>
+              <p className="text-sm text-neutral-400 mt-1 dark:text-neutral-300">
+                Please enter your information to proceed with the checkout.
+              </p>
+            </div>
             <form
               onSubmit={formik.handleSubmit}
-              className="mt-8 flex justify-center flex-col gap-5 w-full"
+              className="mt-8 grid grid-cols-6 gap-6"
             >
-              <div>
-                <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl dark:text-white">
-                  Checkout
-                </h1>
-                <p className="text-sm text-neutral-400 mt-1 dark:text-neutral-300">
-                  Please enter your information to proceed with the checkout.
-                </p>
+              <div className="col-span-6 sm:col-span-3">
+                {renderInputField("city", "city", "text", "City", HomeIcon)}
+              </div>
+              <div className="col-span-6 sm:col-span-3">
+                {renderInputField("phone", "phone", "tel", "Phone", PhoneIcon)}
+              </div>
+              <div className="col-span-6">
+                {renderInputField(
+                  "details",
+                  "details",
+                  "text",
+                  "Details",
+                  IdentificationIcon
+                )}
               </div>
 
-              <div className="grid grid-cols-6 gap-6">
-                <div className="col-span-6 sm:col-span-3">
-                  {renderInputField("city", "city", "text", "City", HomeIcon)}
-                </div>
-                <div className="col-span-6 sm:col-span-3">
-                  {renderInputField(
-                    "phone",
-                    "phone",
-                    "tel",
-                    "Phone",
-                    PhoneIcon
-                  )}
-                </div>
-                <div className="col-span-6">
-                  {renderInputField(
-                    "details",
-                    "details",
-                    "text",
-                    "Details",
-                    IdentificationIcon
-                  )}
-                </div>
-
-                <div className="col-span-6 flex justify-between items-center gap-4 flex-col sm:flex-row">
-                  {renderButton(
-                    "onlinePayment",
-                    "Online Payment",
-                    BanknotesIcon,
-                    payLoading
-                  )}
-                  {renderButton("delivery", "Delivery", TruckIcon, loading)}
-                </div>
+              <div className="col-span-6 flex justify-between items-center gap-4 flex-col sm:flex-row">
+                {renderButton(
+                  "onlinePayment",
+                  "Online Payment",
+                  BanknotesIcon,
+                  payLoading
+                )}
+                {renderButton("delivery", "Delivery", TruckIcon, loading)}
               </div>
             </form>
           </div>

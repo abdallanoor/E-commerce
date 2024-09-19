@@ -189,14 +189,14 @@ export default function Login() {
 
               <button
                 type="submit"
-                className="relative flex items-center justify-center w-full h-full rounded-lg bg-blue-600 px-5 py-3 text-sm font-medium text-white"
+                className="relative flex items-center justify-center w-full h-full rounded-lg text-white dark:text-black bg-black dark:bg-white px-5 py-3 text-sm font-medium"
               >
                 Login
                 <div className="absolute text-white right-0 mr-4">
                   {Loading ? (
-                    <LoadingDots className="mb-3 bg-white " />
+                    <LoadingDots className="mb-3 bg-white dark:bg-black" />
                   ) : (
-                    <PaperAirplaneIcon className="h-4 text-white" />
+                    <PaperAirplaneIcon className="h-4 text-white dark:text-black" />
                   )}
                 </div>
               </button>

@@ -351,10 +351,14 @@ export default function Register() {
                   <button
                     disabled={!(formik.isValid && formik.dirty)}
                     type="submit"
-                    className="flex items-center shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition  focus:outline-none focus:ring active:text-blue-500 hover:bg-blue-700 hover:text-white"
+                    className="flex items-center cursor-pointer shrink-0 rounded-md bg-black px-12 py-3 text-sm font-medium text-white transition  focus:outline-none focus:ring dark:bg-white dark:text-black"
                   >
                     Create an account
-                    {Loading ? <LoadingDots className="bg-white" /> : ""}
+                    {Loading ? (
+                      <LoadingDots className="bg-white dark:bg-black" />
+                    ) : (
+                      ""
+                    )}
                   </button>
 
                   <p className="mt-4 text-sm text-gray-500 sm:mt-0 dark:text-gray-400">

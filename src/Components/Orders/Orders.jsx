@@ -145,7 +145,7 @@ function OrderDetails({ paymentMethodType, productCount, totalOrderPrice }) {
         </div>
         <Link
           to="/"
-          className="w-full px-6 py-3 text-blue-500 border border-blue-500 rounded-md md:w-auto hover:text-gray-100 hover:bg-blue-600 dark:border-grayshade-300 dark:hover:bg-grayshade-500 dark:text-white"
+          className="px-6 py-3 text-black border rounded-md md:w-auto dark:border-grayshade-300 dark:hover:bg-grayshade-500 dark:text-white"
         >
           Go back shopping
         </Link>
@@ -163,8 +163,8 @@ function DetailBox({ label, value, unit }) {
         <span className="text-xl">{value}</span>
       </span>
       {label === "Products" && (
-        <div className="absolute right-0 flex items-center justify-center bg-blue-500 rounded-md w-14 h-14 dark:bg-grayshade-200">
-          <div className="flex items-center justify-center text-lg font-bold text-blue-500 bg-gray-100 rounded-full dark:text-white dark:bg-grayshade-500 w-11 h-11">
+        <div className="absolute right-0 flex items-center justify-center bg-grayshade-200 rounded-md w-14 h-14">
+          <div className="flex items-center justify-center text-lg font-bold text-black bg-gray-100 rounded-full dark:text-white dark:bg-grayshade-500 w-11 h-11">
             {value}
           </div>
         </div>
