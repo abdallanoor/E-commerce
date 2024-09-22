@@ -18,23 +18,25 @@ function ImageSlider({ imageList, setImgIndex, imgIndex, alt }) {
         height="480px"
       />
 
-      <Slider {...settings} className="w-64">
-        {imageList.map((image, index) => (
-          <img
-            className={`rounded-md w-20 h-20 object-cover cursor-pointer border hover:border-grayshade-50 dark:border-transparent transition-colors ${
-              imgIndex === index
-                ? "opacity-50 border-grayshade-50 dark:border-transparent"
-                : ""
-            }`}
-            key={index}
-            src={image}
-            onClick={() => setImgIndex(index)}
-            alt={`${alt} ${index + 1}`}
-            width="80px"
-            height="80px"
-          />
-        ))}
-      </Slider>
+      {imageList.length > 1 && (
+        <Slider {...settings} className="w-64">
+          {imageList.map((image, index) => (
+            <img
+              className={`rounded-md w-20 h-20 object-cover cursor-pointer border hover:border-grayshade-50 dark:border-transparent transition-colors ${
+                imgIndex === index
+                  ? "opacity-50 border-grayshade-50 dark:border-transparent"
+                  : ""
+              }`}
+              key={index}
+              src={image}
+              onClick={() => setImgIndex(index)}
+              alt={`${alt} ${index + 1}`}
+              width="80px"
+              height="80px"
+            />
+          ))}
+        </Slider>
+      )}
     </div>
   );
 }

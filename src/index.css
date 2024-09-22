@@ -15,18 +15,6 @@ html.dark {
   color-scheme: dark !important;
 }
 
-
-/* body::-webkit-scrollbar-track {
-  @apply dark:bg-grayshade-400 bg-zinc-100;
-}
-
-body::-webkit-scrollbar {
-  @apply bg-grayshade-200 w-[8px];
-}
-
-body::-webkit-scrollbar-thumb {
-  @apply bg-blue-600 border border-blue-600;
-} */
 a,
 input {
   @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400  focus-visible:ring-offset-neutral-50 dark:focus-visible:ring-neutral-600 dark:focus-visible:ring-offset-neutral-900;
