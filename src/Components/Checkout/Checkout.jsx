@@ -18,7 +18,7 @@ import LoadingDots from "../Loading/LoadingDots";
 export default function Address() {
   const [payLoading, setPayLoading] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { cashPayment, onlinePayment, cartId, getCart } =
+  const { cashPayment, onlinePayment, cartId, getCart, cartDetails } =
     useContext(cartContext);
   const { userToken } = useContext(userContext);
 
@@ -63,7 +63,8 @@ export default function Address() {
         value={formik.values[name]}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        className="w-full rounded-lg border border-gray-200 p-4 pe-12 text-sm shadow-sm dark:bg-transparent dark:text-white dark:border-neutral-600 dark:placeholder:text-neutral-400"
+        className="w-full rounded-lg border border-gray-200 p-4 pe-12 text-sm shadow-sm dark:bg-transparent dark:text-white dark:border-neutral-600 dark:placeholder:text-neutral-400 disabled:opacity-50 disabled:cursor-no-drop"
+        disabled={cartDetails?.numOfCartItems === 0}
       />
       <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
         <Icon className="h-4 w-4 text-gray-400" />
@@ -77,11 +78,19 @@ export default function Address() {
       onClick={() =>
         formik.setValues({ ...formik.values, submitAction: action })
       }
-      disabled={!(formik.isValid && formik.dirty)}
-      className="flex items-center w-full justify-center gap-2 rounded-md px-12 py-3 text-sm font-medium text-white dark:text-black bg-black dark:bg-white disabled:opacity-70"
+      disabled={
+        !(formik.isValid && formik.dirty) ||
+        isLoading ||
+        cartDetails?.numOfCartItems === 0
+      }
+      className="flex items-center w-full justify-center gap-2 rounded-md px-12 py-3 text-sm font-medium text-white dark:text-black bg-black dark:bg-white disabled:opacity-50"
     >
-      {label} <Icon className="w-5" />{" "}
-      {isLoading ? <LoadingDots className="bg-white" /> : ""}
+      {label}
+      {isLoading ? (
+        <LoadingDots className="bg-white dark:bg-black" />
+      ) : (
+        <Icon className="w-5" />
+      )}
     </button>
   );
 
@@ -111,6 +120,11 @@ export default function Address() {
                 <img src={logo2} alt="Logo2" className="h-8 sm:h-10" />
               </Link>
             </div>
+            {cartDetails?.numOfCartItems === 0 && (
+              <p className="text-red-600 font-bold">
+                Your cart is empty. Please add items to proceed.
+              </p>
+            )}
 
             <div>
               <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl dark:text-white">
@@ -143,7 +157,7 @@ export default function Address() {
               <div className="col-span-6 flex justify-between items-center gap-4 flex-col sm:flex-row">
                 {renderButton(
                   "onlinePayment",
-                  "Online Payment",
+                  "Payment",
                   BanknotesIcon,
                   payLoading
                 )}
