@@ -92,11 +92,6 @@ export default function Login() {
               Explore fashion trends, enhance your shopping online. Login for
               exclusive deals & seamless purchasing.
             </p> */}
-            <div className="mx-auto mt-4 max-w-md text-center text-gray-500">
-              <div>For Test</div>
-              <div>Email: abdallah@yahoo.com</div>
-              <div>Password: Abdo123</div>
-            </div>
 
             <form
               onSubmit={formik.handleSubmit}
@@ -105,6 +100,11 @@ export default function Login() {
               <p className="text-center text-lg font-medium">
                 Login to your account
               </p>
+              <div className="mx-auto text-sm mt-4 max-w-md text-center opacity-60">
+                <div>For Test</div>
+                <div>Email: abdallah@yahoo.com</div>
+                <div>Password: Abdo123</div>
+              </div>
               {Error ? (
                 <div
                   role="alert"

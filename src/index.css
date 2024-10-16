@@ -10,7 +10,7 @@
 body {
   font-family: var(--font-family) !important;
 }
-html{
+html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
 }
@@ -43,14 +43,15 @@ input {
 }
 
 /* slick-slide */
-.slick-slide > div{
+.slick-slide > div {
   margin: 0 5px;
 }
 /* Change the color for dark mode */
-.slick-prev:before, .slick-next:before {
-  color: black ;
+.slick-prev:before,
+.slick-next:before {
+  color: black;
 }
-html.dark .slick-prev:before, 
+html.dark .slick-prev:before,
 html.dark .slick-next:before {
   color: white;
 }
