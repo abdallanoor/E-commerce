@@ -189,7 +189,8 @@ export default function Login() {
 
               <button
                 type="submit"
-                className="relative flex items-center justify-center w-full h-full rounded-lg text-white dark:text-black bg-black dark:bg-white px-5 py-3 text-sm font-medium"
+                className="relative flex items-center justify-center w-full h-full rounded-lg text-white dark:text-black bg-black dark:bg-white px-5 py-3 text-sm font-medium disabled:opacity-50"
+                disabled={Loading}
               >
                 Login
                 <div className="absolute text-white right-0 mr-4">
