@@ -31,7 +31,7 @@ export default function ProductItem({ product }) {
         key={product.id}
         className="md:p-4 lg:p-7 p-3 rounded-lg border border-gray-100  bg-white dark:border-neutral-800 dark:bg-black shadow-md w-full justify-center justify-items-center justify-self-center"
       >
-        <Link to={`/ProductDetails/${product.id}`}>
+        <Link className="w-full block" to={`/ProductDetails/${product.id}`}>
           <img
             className="w-full rounded-lg self-stretch h-72 min-h-52 mb-7 object-cover"
             width="233px"
@@ -40,7 +40,7 @@ export default function ProductItem({ product }) {
             alt={product.title}
           />
         </Link>
-        <div>
+        <div className="w-full">
           <p className="font-semibold text-xl mb-2 h-auto">
             {product.title.split(" ").slice(0, 3).join(" ")}
           </p>
@@ -55,7 +55,7 @@ export default function ProductItem({ product }) {
           </p>
           <span className="lable">{product.category.name}</span>
         </div>
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center w-full">
           <div>
             <p className="text-grayshade-100 dark:text-grayshade-50 text-xs">
               Price
